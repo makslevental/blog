@@ -26,3 +26,4 @@ def plot_value_function_seq(ax,
 
     ax.legend(loc='lower right')
 ```
+$$a^2 + b^2 = c^2$$
