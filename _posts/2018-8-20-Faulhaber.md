@@ -1,15 +1,16 @@
 ---
 layout: post
-title: Faulhaber
+title: Kidane's algorithm
 published: true
 ---
 
-$$
+```python
+from functools import reduce
+from random import randomint
 
-1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2} = \frac{n(n+1)}{2} \\
-
-1^2 + 2^2 + 3^2 + \cdots + n^2 = \frac{n(n+1)}{2} \frac{(2n+1)}{3} = \frac{2n^3 + 3n^2 + n}{6} \\
-
-1^3 + 2^3 + 3^3 + \cdots + n^3 = \left[\frac{n(n+1)}{2}\right]^2 = \frac{n^4 + 2n^3 + n^2}{4}
-
-$$
+nums = [randomint(-100, 100) for _ in range(10)]
+mmax = max(
+    reduce(
+        lambda acc, x: acc+[max(x, acc[-1]+x)], A[1:], [A[0]])
+    ) 
+```
