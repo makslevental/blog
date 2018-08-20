@@ -4,6 +4,8 @@ title: Kidane's algorithm
 published: true
 ---
 
+Functional implementation of Kidane's for max subarray sum.
+
 ```python
 from functools import reduce
 from random import randomint
