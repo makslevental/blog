@@ -5,7 +5,7 @@ published: true
 toc: true
 ---
 
-##Sums of powers
+## Sums of powers
 
 ### First three
 
