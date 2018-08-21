@@ -5,6 +5,8 @@ published: true
 toc: true
 ---
 
+Various formulae
+
 # Sums of powers
 
 ## First three
