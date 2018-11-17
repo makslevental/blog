@@ -12,6 +12,14 @@ pre.highlight {
 
 code {
   font-family:'Bitstream Vera Sans Mono','Courier', monospace;
+
+}
+
+code.highlighter-rouge {
+    padding: .15em .3em;
+    border: 1px solid #E5E5E5;
+    background-color: #f7f7f7;
+    color: maroon;
 }
 
 .highlight .c { color: #586E75 } /* Comment */
