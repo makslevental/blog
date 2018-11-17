@@ -19,12 +19,16 @@ html {
 
 td, th, tr {
     vertical-align: middle;
+    padding: .5em;
+    border-bottom: 1px solid #d7d8da;
 }
 
 thead {
     display: table-header-group;
     vertical-align: middle;
     border-color: inherit;
+    font-weight: 700;
+    text-align: left;
 }
 
 table {
