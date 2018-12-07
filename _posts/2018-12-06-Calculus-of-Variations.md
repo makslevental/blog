@@ -41,7 +41,17 @@ $$
 
 $$
 
-where  $\phi$  is an arbitrary function. The quantity $\varepsilon\phi$ is called the variation of $\rho$. In other words,
+where  $\phi$  is an arbitrary function. This is analogous to the directional derivative
+
+$$
+  \lim _{h\rightarrow 0}\frac {f(\mathbf {x} +h\mathbf {v} )-f(\mathbf {x} )}{h}
+  
+     = \left[\frac{d }{d \alpha}~f(\mathbf{v} + \alpha~\mathbf{u})\right]_{\alpha = 0}
+
+
+$$
+
+The quantity $\varepsilon\phi$ is called the variation of $\rho$. In other words,
 
 $$  \phi \mapsto \left[\frac  {d}{d\epsilon }F[\rho +\epsilon \phi ]\right]_{\epsilon =0}$$
 
