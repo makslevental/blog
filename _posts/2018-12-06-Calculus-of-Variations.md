@@ -21,9 +21,9 @@ The function  $f$  is called the Radon–Nikodym derivative of $\nu$ with re
 
 Let $X$ be a locally compact Hausdorff space. For any positive linear functional  $\psi$  on $C_c(X)$, the space of continuous compactly supported complex-valued functions on a locally compact Hausdorff space $X$, there is a unique regular Borel measure $\mu$ on $X$ such that
 
-$$  \psi(f) = \int_X f(x) \, d \mu(x) \quad $$
+$$  \psi(f) = \int_X g(x) \, d \mu(x) \quad $$
 
-for all $f$ in $C_c(X)$.
+for all $g$ in $C_c(X)$.
 
 # Functional derivative
 
@@ -36,12 +36,12 @@ let
 $$
 
 \begin{align}
- \lim_{\varepsilon\to 0}\frac{F[\rho+\varepsilon \phi]-F[\rho]}{\varepsilon} &= \left [ \frac{d}{d\epsilon}F[\rho+\epsilon \phi]\right ]_{\epsilon=0},
+ \lim_{\varepsilon\to 0}\frac{F[\rho+\varepsilon g]-F[\rho]}{\varepsilon} &= \left [ \frac{d}{d\epsilon}F[\rho+\epsilon g]\right ]_{\epsilon=0},
 \end{align}
 
 $$
 
-where  $\phi$  is an arbitrary function. This is analogous to the directional derivative
+where  $g$  is an arbitrary function. This is analogous to the directional derivative
 
 $$
   \lim _{h\rightarrow 0}\frac {f(\mathbf {x} +h\mathbf {v} )-f(\mathbf {x} )}{h}
@@ -51,20 +51,20 @@ $$
 
 $$
 
-The quantity $\varepsilon\phi$ is called the variation of $\rho$. In other words,
+The quantity $\varepsilon g$ is called the variation of $\rho$. In other words,
 
-$$  \phi \mapsto \left[\frac  {d}{d\epsilon }F[\rho +\epsilon \phi ]\right]_{\epsilon =0}$$
+$$ \psi(g): g \mapsto \left[\frac  {d}{d\epsilon }F[\rho +\epsilon g ]\right]_{\epsilon =0}$$
 
 is a linear functional, so by the Riesz–Markov–Kakutani representation theorem, this functional is given by integration against some measure. Then  $ \delta F/\delta \rho (x)$ is defined to be the Radon–Nikodym derivative of this measure and therefore
 
 $$
-\left [ \frac{d}{d\epsilon}F[\rho+\epsilon \phi]\right ]_{\epsilon=0} \equiv \int \phi(x) \frac{\delta F}{\delta\rho(x)} \; dx 
+\left [ \frac{d}{d\epsilon}F[\rho+\epsilon g]\right ]_{\epsilon=0} \equiv \int g(x) \frac{\delta F}{\delta\rho(x)} \; dx 
 $$
 
 We think of the function $ \delta F/\delta \rho (x)$ as the gradient of $F$ at the point $\rho$ and
 
-$ \int  \phi(x) \frac{\delta F}{\delta\rho(x)}\; dx $
-as the directional derivative at point $\rho$ in the direction of $\phi$.
+$ \int  g(x) \frac{\delta F}{\delta\rho(x)}\; dx $
+as the directional derivative at point $\rho$ in the direction of $g$.
 
 # Euler-Lagrange
 
