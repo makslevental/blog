@@ -53,12 +53,12 @@ $$
 
 The quantity $\varepsilon g$ is called the variation of $\rho$. In other words,
 
-$$ \psi(g): g \mapsto \left[\frac  {d}{d\epsilon }F[\rho +\epsilon g ]\right]_{\epsilon =0}$$
+$$ \psi: g \mapsto \left[\frac  {d}{d\epsilon }F[\rho +\epsilon g ]\right]_{\epsilon =0}$$
 
 is a linear functional, so by the Riesz–Markov–Kakutani representation theorem, this functional is given by integration against some measure. Then  $ \delta F/\delta \rho (x)$ is defined to be the Radon–Nikodym derivative of this measure and therefore
 
 $$
-\left [ \frac{d}{d\epsilon}F[\rho+\epsilon g]\right ]_{\epsilon=0} \equiv \int g(x) \frac{\delta F}{\delta\rho(x)} \; dx 
+\psi(g) = \int g(x) \frac{\delta F}{\delta\rho(x)} \; dx 
 $$
 
 We think of the function $ \delta F/\delta \rho (x)$ as the gradient of $F$ at the point $\rho$ and
