@@ -58,7 +58,7 @@ $$  \phi \mapsto \left[\frac  {d}{d\epsilon }F[\rho +\epsilon \phi ]\right]_{\ep
 is a linear functional, so by the Riesz–Markov–Kakutani representation theorem, this functional is given by integration against some measure. Then  $ \delta F/\delta \rho (x)$ is defined to be the Radon–Nikodym derivative of this measure and therefore
 
 $$
-\int \phi(x) \frac{\delta F}{\delta\rho(x)} \; dx \equiv \left [ \frac{d}{d\epsilon}F[\rho+\epsilon \phi]\right ]_{\epsilon=0}
+\left [ \frac{d}{d\epsilon}F[\rho+\epsilon \phi]\right ]_{\epsilon=0} \equiv \int \phi(x) \frac{\delta F}{\delta\rho(x)} \; dx 
 $$
 
 We think of the function $ \delta F/\delta \rho (x)$ as the gradient of $F$ at the point $\rho$ and
