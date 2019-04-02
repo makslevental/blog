@@ -14,10 +14,10 @@ import numpy as np
 plt.rc('text', usetex=True)
 plt.rc('font', family='serif')
 A = 2/np.pi
-plt.stem([0,1,2,3,4,5], [0,A,-A/2,A/3,-A/4,A/5])
-plt.step([0,1,2,3,4], [0,1,1,0,0], where='post', color='red')
+plt.stem([0,1,2,3,4,5], [0,A,-A/2,A/3,-A/4,A/5], label='$s[n]$')
+plt.step([0,1,2,3,4], [0,1,1,0,0], where='post', color='red', label='$H(n)$')
 plt.fill_between([1,2,3], 0, 1, facecolor='red', alpha=0.3)
-
+plt.legend()
 plt.xlabel("$n$", fontsize=18)
 plt.ylabel(r"$b_n$", fontsize=24)
 # plt.show()
