@@ -4,8 +4,6 @@ title: Abel Rufini theorem
 published: true
 ---
 
-# Introduction
-
 Abel-Ruffini states that there is no general *algebraic solution* to polynomial equations of degree five
 
 $$
