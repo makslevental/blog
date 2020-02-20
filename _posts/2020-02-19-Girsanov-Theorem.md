@@ -287,7 +287,7 @@ Hence $Z_t$ is a valid density process.
 We need to show that 
 
 $$
-	\tilde{B}_t = B_t - \int\limits_0^t \mu_s ds 
+	\tilde{B}_t = B_t - \mu t
 $$
 
 is a Brownian motion under the measure $Q$.
