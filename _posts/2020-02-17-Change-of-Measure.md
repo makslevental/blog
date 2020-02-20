@@ -4,6 +4,10 @@ title: Change of Measure
 published: true
 ---
 
+# Normal random variable 
+
+This post follows [this video](https://www.youtube.com/watch?v=omrnRshzHhw).
+
 Assume $ X \sim N(0,1)$ is distributed standard Normal. 
 Recall that the density $p(x)$ for the standard Normal
 
@@ -52,23 +56,23 @@ $$
 	&= \int\limits_{\alpha}^{\beta} \exp\left( x\mu-\frac{1}{2}\mu^2 \right)  dP(x)  \\
 	&= \int\limits_{A} \exp\left( x\mu-\frac{1}{2}\mu^2 \right)  dP(x)  \\
 	&= \int\limits_{-\infty}^{\infty} \exp\left( x\mu-\frac{1}{2}\mu^2 \right) 1_{A} dP(x)  \\
-	&= E^P \left[\exp\left( x\mu-\frac{1}{2}\mu^2 \right) 1_{A} \right]
+	&= E^P \left[\exp\left( X\mu-\frac{1}{2}\mu^2 \right) 1_{A} \right]
 \end{align}
 $$
 
-Denoting the random variable $ Z(x) = \exp\left( x\mu-\frac{1}{2}\mu^2 \right) $ we can rewrite the last line as 
+Denoting the random variable $ Z(X) = \exp\left( X\mu-\frac{1}{2}\mu^2 \right) $ we can rewrite the last line as 
 
 $$
-	P\left(\alpha -\mu \leq X \leq \beta-\mu\right) = E^P \left[Z(x) 1_{A} \right]
+	P\left(\alpha -\mu \leq X \leq \beta-\mu\right) = E^P \left[Z(X) 1_{A} \right]
 $$
 
-where the last line is pronounced "the expectation of $Z(x)$ under the measure $P$".
+where the last line is pronounced "the expectation of $Z(X)$ under the measure $P$".
 We can use this change in the integrand due to a shift of the interval of integration to define a new measure. 
 Define $Q$ to be a new CDF
 
 $$
 \begin{align}
-	Q(X \leq a) &= E^P \left[\exp\left( x\mu-\frac{1}{2}\mu^2 \right) 1_{x \leq a} \right] \\
+	Q(X \leq a) &= E^P \left[\exp\left( X\mu-\frac{1}{2}\mu^2 \right) 1_{X \leq a} \right] \\
 		&= \frac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^{\infty}  \exp \left( -\frac{1}{2} x^2 \right) \exp\left( x\mu-\frac{1}{2}\mu^2 \right) 1_{x\leq a} dx \\ 
 		&= \frac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^{a}  \exp \left( -\frac{1}{2} x^2 \right) \exp\left( x\mu-\frac{1}{2}\mu^2 \right) dx \\ 
 		&= \frac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^{a}  \exp \left( -\frac{1}{2} \left( -2x\mu + \mu^2 +x^2 \right) \right)  \\ 
@@ -83,10 +87,12 @@ Indeed there is a precise relationship between the two measures
 
 $$
 \begin{align}
-	Q(\alpha \leq X \leq y) &= \int\limits_\alpha^y  \exp\left( x\mu-\frac{1}{2}\mu^2 \right) dP(X) \\
-	Q(y) - Q(\alpha) &= \int\limits_\alpha^y  z(x) dP(X)
+	Q(\alpha \leq X \leq y) &= \int\limits_\alpha^y  \exp\left( x\mu-\frac{1}{2}\mu^2 \right) dP(x) \\
+	Q(y) - Q(\alpha) &= \int\limits_\alpha^y  z(x) dP(x)
 \end{align}
 $$
+
+where $z(x)$ is the density of $Z(X)$.
 
 This is subject absolute continuity constraints on $Q$: a function $F(y)$ is *absolutely continuous* w.r.t. $y$ on $[a,b]$ if for every $\varepsilon > 0$, there is a $\delta$ such that
 
@@ -107,7 +113,7 @@ We omit this.
 We summarize properties of the expectation under change of measure
 
 $$
-	E^P \left[ Z(x) h(x)\right] = \int\limits_{-\infty}^{\infty} \frac{dQ(x)}{dP(x)} h(x) dP(x) = \int\limits_{-\infty}^{\infty} h(x) dQ(x) = E^Q \left[ h(x)\right]
+	E^P \left[ Z(X) h(X)\right] = \int\limits_{-\infty}^{\infty} \frac{dQ(x)}{dP(x)} h(x) dP(x) = \int\limits_{-\infty}^{\infty} h(x) dQ(x) = E^Q \left[ h(X)\right]
 $$
 
 To see what's happening concretely consider this concrete example
