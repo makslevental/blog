@@ -84,15 +84,15 @@ We demonstrate for the $n=2$ case
 
 $$
 \begin{align}
-& \int\limits_{ \alpha_1 -\mu_1 \Delta t}^{\beta_1 -\mu_1 \Delta t}\int\limits_{ \alpha_2 - (\mu_1 + \mu_2)\Delta t}^{ \beta_2 - (\mu_1 + \mu_2)\Delta t} e^ { -\frac{1}{2\Delta t} (x_1-x_0)^2} e^{-\frac{1}{2\Delta t}(x_2-x_1)^2 } dx_1 dx_2 
+&=\frac{1}{2\pi \Delta t} \int\limits_{ \alpha_1 -\mu_1 \Delta t}^{\beta_1 -\mu_1 \Delta t}\int\limits_{ \alpha_2 - (\mu_1 + \mu_2)\Delta t}^{ \beta_2 - (\mu_1 + \mu_2)\Delta t} e^ { -\frac{1}{2\Delta t} (x_1-x_0)^2} e^{-\frac{1}{2\Delta t}(x_2-x_1)^2 } dx_1 dx_2 
 \end{align}
 $$
 
-Then $y_1 = x_1 + \mu_1 \Delta $ implies
+Then $y_1 = x_1 + \mu_1 \Delta t$ implies
 
 $$
 \begin{align}
-& \int\limits_{ \alpha_1 }^{\beta_1 }\int\limits_{ \alpha_2 - (\mu_1 + \mu_2)\Delta t}^{ \beta_2 - (\mu_1 + \mu_2)\Delta t} e^{ -\frac{1}{2\Delta t} (y_1-x_0-\mu_1 \Delta t)^2}e^{ -\frac{1}{2\Delta t}(x_2-y_1+\mu_1\Delta t)^2 } dy_1 dx_2 
+&=\frac{1}{2\pi \Delta t} \int\limits_{ \alpha_1 }^{\beta_1 }\int\limits_{ \alpha_2 - (\mu_1 + \mu_2)\Delta t}^{ \beta_2 - (\mu_1 + \mu_2)\Delta t} e^{ -\frac{1}{2\Delta t} (y_1-x_0-\mu_1 \Delta t)^2}e^{ -\frac{1}{2\Delta t}(x_2-y_1+\mu_1\Delta t)^2 } dy_1 dx_2 
 \end{align}
 $$
 
@@ -100,8 +100,8 @@ and $y_2 = x_2 + (\mu_1 + \mu_2) \Delta t$ implies
 
 $$
 \begin{align}
-& \int\limits_{ \alpha_1 }^{\beta_1 }\int\limits_{ \alpha_2 }^{ \beta_2 } e^{ -\frac{1}{2\Delta t} (y_1-x_0-\mu_1 \Delta t)^2 } e^{ -\frac{1}{2\Delta t}(y_2-(\mu_1+\mu_2)\Delta t-y_1+\mu_1\Delta t)^2 } dy_1 dy_2 \\
-& \int\limits_{ \alpha_1 }^{\beta_1 }\int\limits_{ \alpha_2 }^{ \beta_2 } e^{ -\frac{1}{2\Delta t} (y_1-x_0-\mu_1 \Delta t)^2 } e^{ -\frac{1}{2\Delta t}(y_2-y_1-\mu_2 \Delta t)^2} dy_1 dy_2 
+&=\frac{1}{2\pi \Delta t} \int\limits_{ \alpha_1 }^{\beta_1 }\int\limits_{ \alpha_2 }^{ \beta_2 } e^{ -\frac{1}{2\Delta t} (y_1-x_0-\mu_1 \Delta t)^2 } e^{ -\frac{1}{2\Delta t}(y_2-(\mu_1+\mu_2)\Delta t-y_1+\mu_1\Delta t)^2 } dy_1 dy_2 \\
+&=\frac{1}{2\pi \Delta t} \int\limits_{ \alpha_1 }^{\beta_1 }\int\limits_{ \alpha_2 }^{ \beta_2 } e^{ -\frac{1}{2\Delta t} (y_1-x_0-\mu_1 \Delta t)^2 } e^{ -\frac{1}{2\Delta t}(y_2-y_1-\mu_2 \Delta t)^2} dy_1 dy_2 
 \end{align}
 $$
 
@@ -109,8 +109,8 @@ Then changing the dummy variable $y_i \rightarrow x_i$
 
 $$
 \begin{align}
-& \int\limits_{ \alpha_1 }^{\beta_1 }\int\limits_{ \alpha_2 }^{ \beta_2 } e^{ -\frac{1}{2\Delta t} (x_1-x_0-\mu_1 \Delta t)^2 } e^{ -\frac{1}{2\Delta t}(x_2-x_1-\mu_2 \Delta t)^2 } dx_1 dx_2  \\
-& \int\limits_{ \alpha_1 }^{\beta_1 }\int\limits_{ \alpha_2 }^{ \beta_2 } e^{ -\frac{1}{2\Delta t} \left(\sum_{i=1}^2 x_i - x_{i-1} -\mu_i \Delta t\right)^2} dx_1 dx_2
+&=\frac{1}{2\pi \Delta t} \int\limits_{ \alpha_1 }^{\beta_1 }\int\limits_{ \alpha_2 }^{ \beta_2 } e^{ -\frac{1}{2\Delta t} (x_1-x_0-\mu_1 \Delta t)^2 } e^{ -\frac{1}{2\Delta t}(x_2-x_1-\mu_2 \Delta t)^2 } dx_1 dx_2  \\
+&=\frac{1}{2\pi \Delta t} \int\limits_{ \alpha_1 }^{\beta_1 }\int\limits_{ \alpha_2 }^{ \beta_2 } e^{ -\frac{1}{2\Delta t} \left(\sum_{i=1}^2 x_i - x_{i-1} -\mu_i \Delta t\right)^2} dx_1 dx_2
 
 \end{align}
 $$
@@ -118,13 +118,17 @@ $$
 Generalizing to $n$ time steps we get 
 
 $$
-\frac{1}{(2\pi \Delta t)^{n/2}} \int\limits_{ \alpha_1 }^{\beta_1 }\cdots\int\limits_{ \alpha_n }^{ \beta_n } e^{ -\frac{1}{2\Delta t} \left(\sum_{i=1}^n x_i - x_{i-1} -\mu_i \Delta t\right)^2} dx_1 \cdots dx_n
+\begin{align}
+P(A-\mu) &= \frac{1}{(2\pi \Delta t)^{n/2}} \int\limits_{ \alpha_1 }^{\beta_1 }\cdots\int\limits_{ \alpha_n }^{ \beta_n } e^{ -\frac{1}{2\Delta t} \left(\sum_{i=1}^n x_i - x_{i-1} -\mu_i \Delta t\right)^2} dx_1 \cdots dx_n
+\end{align}
 $$
 
 Now expanding the square and splitting the exponential
 
 $$
-\frac{1}{(2\pi \Delta t)^{n/2}} \int\limits_{ \alpha_1 }^{\beta_1 }\cdots\int\limits_{ \alpha_n }^{ \beta_n } e^{ -\frac{1}{2\Delta t} \left(\sum_{i=1}^n \Delta x_i \right)^2}e^{  \sum_{i=1}^n \mu_i \Delta x_i -\frac{1}{2}\mu_i^2 \Delta t} dx_1 \cdots dx_n
+\begin{align}
+P(A-\mu) &= \frac{1}{(2\pi \Delta t)^{n/2}} \int\limits_{ \alpha_1 }^{\beta_1 }\cdots\int\limits_{ \alpha_n }^{ \beta_n } e^{ -\frac{1}{2\Delta t} \left(\sum_{i=1}^n \Delta x_i \right)^2}e^{  \sum_{i=1}^n \mu_i \Delta x_i -\frac{1}{2}\mu_i^2 \Delta t} dx_1 \cdots dx_n
+\end{align}
 $$
 
 Defining
