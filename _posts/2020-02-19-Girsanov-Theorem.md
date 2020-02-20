@@ -43,11 +43,11 @@ $$
 The conditional distribution of $X_i$ given $X_{i-1}$, i.e. given its previous value, is
 
 $$
-\begin{align}
+\begin{aligned}
 	X_i | (X_{i-1} = x_{i-1}) &\sim N(x_{i-1}, \Delta t) \\
 	& \iff \\
 	p(x_i - x_{i-1} | x_{i-1}) &= \frac{1}{\sqrt{2\pi \Delta t}} e^ { -\frac{1}{2\Delta t} \left( x_i - x_{i-1} \right)^2 }
-\end{align}
+\end{aligned}
 $$
 
 We now ask what the probability of the event $A$ that each of the $X_i$ being within a range, i.e. 
@@ -59,10 +59,10 @@ $$
 Since the conditional distributions are independent we can write this as 
 
 $$
-\begin{align}
+\begin{aligned}
 	P(A) &= \int\limits_{\alpha_1}^{\beta_1}\int\limits_{\alpha_2}^{\beta_2}\cdots\int\limits_{\alpha_n}^{\beta_n} p(x_1) p(x_2 - x_1 | x_1) \cdots p(x_n - x_{n-1} | x_{n-1}) dx_1 dx_2 \cdots dx_n \\
 	&= \frac{1}{(2\pi \Delta t)^{n/2}}\int\limits_{\alpha_1}^{\beta_1}\int\limits_{\alpha_2}^{\beta_2}\cdots\int\limits_{\alpha_n}^{\beta_n} e^ { -\frac{1}{2\Delta t} \sum_{i=1}^{n} (x_i - x_{i-1})^2} dx_1 dx_2 \cdots dx_n
-\end{align}
+\end{aligned}
 $$
 
 Now we change the measure on each random variable by shifting the interval
@@ -74,61 +74,61 @@ $$
 Making the substitution into the integral
 
 $$
-\begin{align}
+\begin{aligned}
 	P(A-\mu) &= \int\limits_{ \alpha_1 -\mu_1 \Delta t}^{\beta_1 -\mu_1 \Delta t}\cdots\int\limits_{ \alpha_n -\sum_{i=1}^n \mu_i \Delta t}^{\beta_n -\sum_{i=1}^n\mu_i \Delta t} p(x_1)  \cdots p(x_n - x_{n-1} | x_{n-1}) dx_1 dx_2 \cdots dx_n 
-\end{align}
+\end{aligned}
 $$
 
 Making the change of variables to restore the original limits of integration is similar to the 1D case. 
 We demonstrate for the $n=2$ case
 
 $$
-\begin{align}
+\begin{aligned}
 &=\frac{1}{2\pi \Delta t} \int\limits_{ \alpha_1 -\mu_1 \Delta t}^{\beta_1 -\mu_1 \Delta t}\int\limits_{ \alpha_2 - (\mu_1 + \mu_2)\Delta t}^{ \beta_2 - (\mu_1 + \mu_2)\Delta t} e^ { -\frac{1}{2\Delta t} (x_1-x_0)^2} e^{-\frac{1}{2\Delta t}(x_2-x_1)^2 } dx_1 dx_2 
-\end{align}
+\end{aligned}
 $$
 
 Then $y_1 = x_1 + \mu_1 \Delta t$ implies
 
 $$
-\begin{align}
+\begin{aligned}
 &=\frac{1}{2\pi \Delta t} \int\limits_{ \alpha_1 }^{\beta_1 }\int\limits_{ \alpha_2 - (\mu_1 + \mu_2)\Delta t}^{ \beta_2 - (\mu_1 + \mu_2)\Delta t} e^{ -\frac{1}{2\Delta t} (y_1-x_0-\mu_1 \Delta t)^2}e^{ -\frac{1}{2\Delta t}(x_2-y_1+\mu_1\Delta t)^2 } dy_1 dx_2 
-\end{align}
+\end{aligned}
 $$
 
 and $y_2 = x_2 + (\mu_1 + \mu_2) \Delta t$ implies
 
 $$
-\begin{align}
+\begin{aligned}
 &=\frac{1}{2\pi \Delta t} \int\limits_{ \alpha_1 }^{\beta_1 }\int\limits_{ \alpha_2 }^{ \beta_2 } e^{ -\frac{1}{2\Delta t} (y_1-x_0-\mu_1 \Delta t)^2 } e^{ -\frac{1}{2\Delta t}(y_2-(\mu_1+\mu_2)\Delta t-y_1+\mu_1\Delta t)^2 } dy_1 dy_2 \\
 &=\frac{1}{2\pi \Delta t} \int\limits_{ \alpha_1 }^{\beta_1 }\int\limits_{ \alpha_2 }^{ \beta_2 } e^{ -\frac{1}{2\Delta t} (y_1-x_0-\mu_1 \Delta t)^2 } e^{ -\frac{1}{2\Delta t}(y_2-y_1-\mu_2 \Delta t)^2} dy_1 dy_2 
-\end{align}
+\end{aligned}
 $$
 
 Then changing the dummy variable $y_i \rightarrow x_i$
 
 $$
-\begin{align}
+\begin{aligned}
 &=\frac{1}{2\pi \Delta t} \int\limits_{ \alpha_1 }^{\beta_1 }\int\limits_{ \alpha_2 }^{ \beta_2 } e^{ -\frac{1}{2\Delta t} (x_1-x_0-\mu_1 \Delta t)^2 } e^{ -\frac{1}{2\Delta t}(x_2-x_1-\mu_2 \Delta t)^2 } dx_1 dx_2  \\
 &=\frac{1}{2\pi \Delta t} \int\limits_{ \alpha_1 }^{\beta_1 }\int\limits_{ \alpha_2 }^{ \beta_2 } e^{ -\frac{1}{2\Delta t} \left(\sum_{i=1}^2 x_i - x_{i-1} -\mu_i \Delta t\right)^2} dx_1 dx_2
 
-\end{align}
+\end{aligned}
 $$
 
 Generalizing to $n$ time steps we get 
 
 $$
-\begin{align}
+\begin{aligned}
 P(A-\mu) &= \frac{1}{(2\pi \Delta t)^{n/2}} \int\limits_{ \alpha_1 }^{\beta_1 }\cdots\int\limits_{ \alpha_n }^{ \beta_n } e^{ -\frac{1}{2\Delta t} \left(\sum_{i=1}^n x_i - x_{i-1} -\mu_i \Delta t\right)^2} dx_1 \cdots dx_n
-\end{align}
+\end{aligned}
 $$
 
 Now expanding the square and splitting the exponential
 
 $$
-\begin{align}
+\begin{aligned}
 P(A-\mu) &= \frac{1}{(2\pi \Delta t)^{n/2}} \int\limits_{ \alpha_1 }^{\beta_1 }\cdots\int\limits_{ \alpha_n }^{ \beta_n } e^{ -\frac{1}{2\Delta t} \left(\sum_{i=1}^n \Delta x_i \right)^2}e^{  \sum_{i=1}^n \mu_i \Delta x_i -\frac{1}{2}\mu_i^2 \Delta t} dx_1 \cdots dx_n
-\end{align}
+\end{aligned}
 $$
 
 Defining
@@ -140,13 +140,13 @@ $$
 we have just as in the single variable case
 
 $$
-\begin{align}
+\begin{aligned}
 	P(A-\mu) &= \int\limits_A z_n dP(x) \\
 	&= Q(A) \\ 
 	\frac{dQ}{dP} &= z_n \\
 	E^Q \left[ h(X) \right] &= E^P \left[ Z(X) h(X) \right]
 	
-\end{align}
+\end{aligned}
 $$
 
 Under this new measure $Q$
@@ -232,10 +232,10 @@ To do this we apply Ito's lemma to the exponential.
 Let $X = \mu B_t - \frac{1}{2} \mu^2 t$ and then
 
 $$
-\begin{align}
+\begin{aligned}
 	Z_t &= e^{ \mu B_t - \frac{1}{2}  \mu_s^2 t } \\
 	&= e^X
-\end{align}
+\end{aligned}
 $$
 
 Recall that the Ito differential of an exponential is (**TODO**)
@@ -249,10 +249,10 @@ Since $\mu$ is constant we have that $dX = \mu dB - \frac{1}{2}\mu^2 dt$ and $dX
 Substituting these into $dZ_t$ we get
 
 $$
-\begin{align}
+\begin{aligned}
 	dZ_t &= Z_t \left( \mu dB -\frac{1}{2}\mu^2 dt + \frac{1}{2}\mu^2 dt \right) \\
 	&= \mu Z_t dB
-\end{align}
+\end{aligned}
 $$
 
 and so we see that there is no drift term and hence $Z_t$ is a local Martingale.
@@ -273,11 +273,11 @@ $$
 is a Brownian motion and so $e^X$ is a geometric Brownian motion with expectation (**TODO**)
 
 $$
-\begin{align}
+\begin{aligned}
 	E \left[ e^X \right] &= e^{E[X] + \frac{1}{2} \text{Var}[X } \\
 	&= e^{ -\frac{1}{2}\mu^2 t + \frac{1}{2}\mu^2 t } \\
 	&= 1
-\end{align}
+\end{aligned}
 $$
 
 Hence $Z_t$ is a valid density process.
@@ -321,21 +321,21 @@ $$
 Using Ito's lemma again 
 
 $$
-\begin{align}
+\begin{aligned}
 	Z_t = e^{ \mu B_t - \frac{1}{2} \mu^2 t } &\qquad \tilde{B}_t = B_t \mu t \\
 	dZ_t = \mu Z_t dB &\qquad d\tilde{B} - \mu dt
-\end{align}
+\end{aligned}
 $$
 
 and Ito's product rule
 
 $$
-\begin{align}
+\begin{aligned}
 	d(Z_t \tilde{B}_t) &= Z_t d\tilde{B} + \tilde{B}dZ_t + dZ_t d\tilde{B} \\
 	&= Z_t (dB - \mu dt) + (B_t -\mu t) \mu Z_t dB + \mu Z_t dB (dB - \mu dt) \\
 	&= Z_t dB -\mu Z_t dt + (B_t-\mu t) \mu Z_t dB + \mu Z_t dt \\
 	&= \left( Z_t + (B - \mu t) \mu \right)dB
-\end{align}
+\end{aligned}
 $$
 
 and so we have a driftless Ito diffusion.
