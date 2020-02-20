@@ -11,6 +11,9 @@ $$
 $$
 
 or higher.
+
+Note this post follows [this video](https://www.youtube.com/watch?v=zeRXVL6qPk4).
+
 An algebraic solution to a polynomial equation is a "formula" for the *roots* of the polynomial consisting of only sums, differences, products, quotients, powers, and $n$th roots of the complex coefficients polynomials. 
 
 Juxtapose this with second order polynomial equations
