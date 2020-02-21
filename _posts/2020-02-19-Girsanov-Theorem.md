@@ -182,19 +182,20 @@ $$
 $$
 
 where in the limit as $\Delta t \rightarrow 0$ the process $X_i$ becomes a continuous-time Brownian motion $B_t$.
-The Girsanov theorem states that if $B_t$ is a Brownian motion under a measure $P$ then shifting the intervals of integration by 
+
+The Girsanov theorem states that if $B_t$ is a Brownian motion under a measure $P$ then shifting the intervals of integration (changing the measure) by 
 
 $$
 	\int\limits_0^t \mu_s ds
 $$
 
-produces another measure $Q$ with Radon-Nikodym *process* $Z_t$
+produces another measure $Q$ defined in terms of the Radon-Nikodym derivative $Z_t$
 
 $$
-	Z_t := \frac{dQ}{dP} = e^{ \int_0^t \mu_s dB_s - \frac{1}{2} \int_0^t \mu_s^2 ds }
+	\frac{dQ}{dP} := Z_t := e^{ \int_0^t \mu_s dB_s - \frac{1}{2} \int_0^t \mu_s^2 ds }
 $$
 
-**and** under this new measure $Q$
+which is a Martingale under $P$ **and** under this new measure $Q$
 
 $$
 	\tilde{B}_t := B_t - \int\limits_0^t \mu_s ds 
@@ -214,12 +215,15 @@ $$
 	\tilde{B}_t := B_t - \mu t
 $$
 
-We prove Girsanov's theorem in this simplified case.
+<!-- We prove Girsanov's theorem in this simplified case.
 
 ## Martingale
 
+
+
+
 We have to show that $Z_t$ is a valid density in continuous time. 
-This is equivalent to showing that its expectation under the measure $P$ is equal to 1 or alternatively that it is Martingale
+This is equivalent to showing that its expectation under the measure $P$ is equal to 1<sup>[1](#expectation)</sup> or alternatively that it is Martingale
 
 $$
 	E^P \left[ Z_t | \mathscr{F}_s \right] = Z_s
@@ -227,7 +231,7 @@ $$
 
 where $\mathscr{F}_s$ is a filtration to which $Z_t$ is adapted (i.e. $Z_t$ is $\mathscr{F}_t$-measurable for all $t \geq 0$).
 Assuming that the process is bounded we only need to show that it is local Martingale to show that it is Martingale. 
-One way to do this to show that it is an Ito diffusion with no drift term (**TODO**).
+One way to do this to show that it is an Ito diffusion with no drift term<sup>[2](#local-martingale)</sup>.
 To do this we apply Ito's lemma to the exponential.
 Let $X = \mu B_t - \frac{1}{2} \mu^2 t$ and then
 
@@ -294,14 +298,14 @@ is a Brownian motion under the measure $Q$.
 The standard definition of a Brownian motion is
 
 
-1. $P(\tilde{B}_0 = 0) = 1 $
+1. $P(\tilde{B}_0 = 0) = 1$
 2. Independent increments $\Delta \tilde{B} := \tilde{B}_t - \tilde{B}_s$
 3. $\Delta \tilde{B} \sim N (0, t-s)$
 
 
 An alternative definition (Levi's characterization) is 
 
-1. $P(\tilde{B}_0 = 0) = 1 $
+1. $P(\tilde{B}_0 = 0) = 1$
 2. $\tilde{B}_t$ is a Martingale under $Q$ with continuous sample paths
 3. $\tilde{B}_t^2 -t$ is a Martingale
 
@@ -356,3 +360,8 @@ $$
 
 a driftless Ito diffusion.
 
+<hr>
+
+<a name="expectation">1</a>.  Every bounded local Martingale is a Martingale. 
+
+<a name="local-martingale">2</a>.  Every bounded local Martingale is a Martingale.  -->
