@@ -1,8 +1,10 @@
 ---
 layout: post
-title: Abel Rufini theorem
+title: Abel-Rufini theorem
 published: true
 ---
+
+This post follows [this video](https://www.youtube.com/watch?v=zeRXVL6qPk4) and explicates Arnold's topological proof of Abel-Ruffini.
 
 Abel-Ruffini states that there is no general *algebraic solution* to polynomial equations of degree five
 
@@ -12,9 +14,8 @@ $$
 
 or higher.
 
-Note this post follows [this video](https://www.youtube.com/watch?v=zeRXVL6qPk4).
 
-An algebraic solution to a polynomial equation is a "formula" for the *roots* of the polynomial consisting of only sums, differences, products, quotients, powers, and $n$th roots of the complex coefficients polynomials. 
+An algebraic solution to a polynomial equation is a "formula" for the *roots* of the polynomial consisting of only sums, differences, products, quotients, powers, and arbitrary roots of the complex coefficients polynomials. 
 
 Juxtapose this with second order polynomial equations
 
@@ -39,7 +40,7 @@ In general you get a *permutation* of the set of roots and so in this way we get
 
 Also note that we can produce coefficient loops that map to any permutation of the roots by permutating the roots and "watching" the coefficients.
 
-Hence, the way to prove Abel-Ruffini is to show that any expression involving the coefficients (formula for the roots) returns to itself after the coefficients traverse their loops but the roots do not (and therefore the expression does not express all of the roots). 
+Hence, the way to prove Abel-Ruffini is to show that any expression involving the coefficients (formula for the roots) returns to itself after the coefficients traverse their loops but the roots do not (and therefore the expression cannot capture  all of the roots). 
 For example, an immediate corollary of the construction of the mapping between loops of coefficients and roots is the fact that a general solution involving only $-, +, \times, \div$ is not possible; $-, +, \times, \div$ are all single-valued (and therefore no composition thereof could produce multiple roots).
 
 <iframe style="display:block; margin:auto" width="560" height="315" src="https://www.youtube.com/embed/zeRXVL6qPk4?start=320" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -61,6 +62,7 @@ $$
 	\sqrt[n]{z} &= \sqrt[n]{r} e^{i \theta /n} \\
 	&= \sqrt[n]{r} e^{i \theta /n + 2\pi/n} \\
 	&= \sqrt[n]{r} e^{i \theta /n + 4\pi/n} \\
+	& \qquad\vdots\\
 	&= \sqrt[n]{r} e^{i \theta /n + 2k\pi/n} 
 \end{align}
 $$
@@ -81,14 +83,14 @@ $$
 
 of the loops (where $z_1(-t)$ indicates we traverse loop $z_1$ backwards). 
 
-For such a combination of loops $\Delta \theta = 0$ and so the values produced by the $n$th root return to their original values.
-This immediately proves that any expression involving only one root cannot be a general expression for the same reason as for arithmetic functions of the coefficients - because we can construct loops such that values of single $n$th root return to themselves but the solutions of the polynomial equation do not:
+For such a combination of loops $\Delta \theta = 0$ and so the values produced by the $n$th root return to themselves.
+This immediately proves that any expression involving only one root cannot be a general expression for the same reason as for arithmetic functions of the coefficients - because we can construct loops such that values of a single $n$th root return to themselves but the solutions of the polynomial equation do not:
 
 <iframe style="display:block; margin:auto" width="560" height="315" src="https://www.youtube.com/embed/zeRXVL6qPk4?start=600" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Nested roots
 
-The way forward to the ultimate proof is in the answer on how to handle functions of the coefficients involving nested roots
+The way forward to the ultimate proof is in the answer on how to handle functions of the coefficients involving nested roots such as
 
 $$
 	\sqrt[3]{c + \sqrt{b+d}}  
@@ -115,7 +117,7 @@ This naturally extends to deeper nesting by building commutators of commutators 
 
 So this resolves how to build loops such that functions of the coefficients involving nested roots (to any depth) return to their original values. 
 But it is possible that after traversing all of these loops the solutions to the polynomial equation do in fact return to themselves. 
-It remains to show that we can infact construct towers of commutators such that the solutions to the polynomial equation do not in fact return to themselves.
+It remains to show that we can infact construct towers of commutators such that the solutions to the polynomial equation do not in fact return to themselves while the values of the purported formulaic expression do.
 
 # Permutations
 
@@ -139,7 +141,7 @@ $$
 $$
 
 This means we only need to inspect permutations of $n$ objects. 
-For example in the case of $n=2$ (quadratic equations) we only have two possible permutations of the solutions
+For example in the case of $n=2$ (quadratic equations) we only have two possible permutations of the roots
 
 $$
 \begin{align}
@@ -148,7 +150,7 @@ $$
 \end{align}
 $$
 
-and you can check that $P := [P_1, P_2] = (12) = I$ the identity permutation and therefore any commutator of loops of the coefficients of a quadratic equation does in fact return the solutions of that equation to themselves (and hence a quadratic formula could in fact express the solutions accurately).
+and you can check that $P := [P_1, P_2] = (12) = I$ the identity permutation and therefore any commutator of loops of the coefficients of a quadratic equation does in fact return the solutions of that equation to themselves (and hence a quadratic formula does in fact express the solutions accurately).
 
 # $S_5$
 
@@ -159,7 +161,7 @@ In fact, these 14,400 different commutators turn out to be only 60 unique permut
 
 <iframe style="display:block; margin:auto" width="560" height="315" src="https://www.youtube.com/embed/zeRXVL6qPk4?start=1202" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-This shows that expressions with a single root cannot accurately characterize the solutions to 5th degree polynomial (because we can construct loops of the coefficients that do return the expression to itself but do not return the solutions to themselves). 
+This shows that expressions with a single root cannot accurately characterize the solutions to 5th degree polynomial (because we can construct loops of the coefficients that do return the expression to itself but do not return the roots to themselves). 
 What about expressions with a nested root?
 For this we need to check the number unique permutations that comprise the set of all commutators of commutators (of which there are $60 \times 60$)
 
