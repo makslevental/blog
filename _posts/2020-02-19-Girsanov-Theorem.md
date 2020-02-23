@@ -4,7 +4,9 @@ title: Girsanov theorem intuition
 published: true
 ---
 
-This post follows [this video](https://www.youtube.com/watch?v=vKjbau2Hlrs) and covers the intuition for change of measure for a **stochastic process**.
+This post follows [this video](https://www.youtube.com/watch?v=vKjbau2Hlrs) and [this video](https://www.youtube.com/watch?v=YF3nXQ6g370&t=96s) and covers the intuition for change of measure for a **stochastic process** and **stochastic differential equations**.
+
+# Stochastic processes
 
 Consider a collection Normal random variables 
 
@@ -167,6 +169,8 @@ What's happening here is that the process is being centering by the change of me
 
 ![]({{ "/images/Girsanov.png" | absolute_url }})
 
+# Girsanov
+
 If we squint at 
 
 $$
@@ -201,3 +205,59 @@ $$
 
 is a Brownian motion.
 
+A simplified form of Girsanov is in the case that where $\mu_t \equiv \mu$ i.e. $\mu$ doesn't depend on time 
+
+$$
+	\begin{aligned}
+		Z_t &= e^{\mu B_t - \tfrac{1}{2} \mu^2 t} \\
+		\tilde{B}_t &= B_t - \mu t
+	\end{aligned}
+$$
+
+# Stochastic differential equations
+
+Consider a stochastic differential equation (SDE)
+
+$$
+	dX_t = \mu dt + \sigma dB_t
+$$
+
+Note that $\mu dt$ is the drift term (i.e. over time the mean of the process will move $\mu\times t$). 
+
+Factoring $dX_t$
+
+$$
+	dX_t = \sigma \left(\frac{\mu}{\sigma} dt + dB_t\right)
+$$
+
+If we can find a new measure such that the term in the parentheses if the differential of a Brownian motion
+
+$$
+	d \tilde{B}_t = \frac{\mu}{\sigma} dt + dB_t
+$$
+
+then $dX_t - \tfrac{\mu}{\sigma} dt$ will have zero drift under this measure.
+
+Inspecting $d\tilde{B}_t$ we see that the relationship with $B_t$ must be (through integration of both sides)
+
+$$
+	\tilde{B}_t = \frac{\mu}{\sigma} t + B_t
+$$
+
+Now applying Girsanov we have
+
+$$
+\frac{dQ}{dP} = e^{-\tfrac{\mu}{\sigma} B_t -\tfrac{1}{2} \left(\tfrac{\mu}{\sigma}\right)^2 t}
+$$
+
+and rearranging $dB_t$ we have, for $dX_t$
+
+$$
+\begin{aligned}
+	dX_t &= \sigma \left(\frac{\mu}{\sigma} dt + dB_t\right) \\ 
+	&= \sigma \left(\frac{\mu}{\sigma} dt + \left( d\tilde{B}_t - \frac{\mu}{\sigma} dt\right)\right) \\ 
+	&= \sigma d\tilde{B}_t
+\end{aligned}
+$$
+
+which is manifestly a zero drift process.
