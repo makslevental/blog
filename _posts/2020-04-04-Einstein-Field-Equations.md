@@ -1,9 +1,15 @@
 ---
 layout: post
 title: Einstein Field Equations
-published: false
+published: true
 ---
-$$\newcommand{\vec}{\mathbf}$$
+$$
+\newcommand{\vec}{\mathbf}
+\newcommand{\d}{\text{d}}
+\newcommand{\bm}{\pmb}
+\newcommand{\pd}[1]{\frac{\partial}{\partial #1}}
+\newcommand{\pdd}[2]{\frac{\partial #1}{\partial #2}}
+$$
 
 In general theory of relativity (GR) the *Einstein field equations* relate the geometry of space-time with the distribution of matter within it.
 
@@ -20,129 +26,228 @@ where $R_{\mu \nu }$ is the Ricci curvature tensor, $R$ is the scalar curvature,
 
 # Tensors
 
-## Change of basis
+## Covariance and contravariance of vectors
 
-Suppose we have two orthonormal bases $(\vec{u}_1, \vec{u}_2)$, $(\vec{v}_1, \vec{v}_2)$ related to each other by a rotation $\theta$
+### Intuition
 
-<p>
-<img style="display:block; margin:auto;" src="{{ "/images/einstein/basis.png" | absolute_url }}">
-</p>
+Covariance and contravariance characterize how quantities (typically vectors) measured in some space transform when the space undergoes a change of basis or coordinate system. 
+A *covariant* quantity has components that transform in the same way as the basis (to be clarified). 
+A *contravariant* quantity has components that transform opposite of the basis (to be clarified). 
 
-It's clear that 
-
-$$
-    \begin{align*}
-        \vec{v}_1 &= \vec{u}_1 \cos\theta + \vec{u}_2 \sin\theta, \\
-        \vec{v}_2 &= \vec{u}_1 (-\sin\theta) + \vec{u}_2 \cos\theta.
-    \end{align*} 
-$$
-
-Note that both $\vec{v}_1, \vec{v}_2$ have unit length. 
-Alternatively 
+A physical example will illustrate the intuitive sense of the words: imagine a temperature $T$ as a function of position $x$ where position is measured in meters and temperature in degrees Fahrenheit:
 
 $$
-    \begin{align*}
-        (\vec{v}_1, \vec{v}_2) &= (\vec{u}_1, \vec{u}_2)
-            \begin{pmatrix}
-                \cos\theta & -\sin\theta \\
-                \sin\theta & \cos\theta
-            \end{pmatrix} \\
-            &= (\vec{u}_1, \vec{u}_2)R\left(\theta\right)
-    \end{align*}
+    T = f(x)
 $$
 
-where $R(\theta)$ is the rotation matrix. 
-Now suppose we have a vector $\vec{x}$ defined in the $(\vec{u}_1, \vec{u}_2)$ basis
+Consider two quantities: 
+
+1. displacement along the $x$-axis between positions (i.e. $\Delta x = x^2 - x^1$)
+2. the derivative of $T$ with respect to $x$ at some $x^0$ (i.e. the gradient or the slope)
+
+What happens to each quantity if we rescale the $x$-axis (i.e. change the coordinate system) to be in terms of kilometers instead of meters (i.e. scale the $x$-axis by 1000)?
+
+1. any displacement will shrink by 1000 (i.e. will change opposite of the $x$-axis)
+2. the gradient will become steeper by a factor of 1000 (i.e. will change in the same way as the $x$-axis) since, for example, 5 degrees per meter is the same as 5000 degrees per kilometer.
+
+Hence displacement is a contravariant quantity and the gradient is a covariant quantity.
+
+Some conventions:
+
+1. Covariant vectors are written as rows[^2] of components with subscripts: $(\alpha_1, \alpha_2, \alpha_3)$
+2. Contravariant vector are written as columns of components with superscripts:
+   
+   $$
+        \begin{bmatrix}
+            v^1 \\
+            v^2 \\
+            v^3 
+        \end{bmatrix}
+   $$
+3. Expressions with repeated indices indicate a sum[^3]: $\alpha_i v^i = \sum_i \alpha_i v^i$
+
+In general covariance and contravariance characeterize how components of vector transform under a change of basis; let $V$ be a vector space and let $\bm{e} := \left(\bm{x}_1, \dots, \bm{x}_n\right)$ and $\bm{e}' := \left(\bm{y}_1, \dots, \bm{y}_n\right)$ be bases for $V$.
+Then $\bm{e}'$ is related to $\bm{e}$ (and vice-versa) by a change of basis i.e right multiplication by a change of basis matrix $A := \left(a_j^i\right)$
 
 $$
-        \vec{x} = \left(\vec{u}_1, \vec{u}_2\right)
-            \begin{pmatrix}
-                x_1 \\ x_2
-            \end{pmatrix}
+    \begin{aligned}
+        \bm{e}' &= \bm{e} \cdot A \\ 
+        &= \left(a_1^i \bm{x}_i, \dots, a_n^i \bm{x}_i\right) \\
+        
+    \end{aligned}
 $$
 
-and in the $(\vec{v}_1, \vec{v}_2)$ basis
+or terms of components $\bm{y}_j = a_j^i \bm{x}_i$.
+
+### Contravariance
+
+Let $$v = v_{\bm{e}}^i \cdot \bm{x}_{i}$$ be a vector where $v_{\bm{e}}^i$ are the components of the vector relative to the $\bm{e}$ basis.
+
+If we write the components of $v$ as a column vector 
 
 $$
-        \vec{x} = (\vec{v}_1, \vec{v}_2)
-            \begin{pmatrix}
-                x'_1 \\ x'_2
-            \end{pmatrix}
+        \bm{v}_{\bm{e}} = \begin{bmatrix}
+            v_{\bm{e}}^i \\
+            \vdots \\
+            v_{\bm{e}}^n \\
+        \end{bmatrix}
 $$
 
-
-<p>
-<img style="display:block; margin:auto;" src="{{ "/images/einstein/basis-change.png" | absolute_url }}">
-</p>
-
-Equating both expressions for $\vec{x}$ 
+we can omit indices and write 
 
 $$
-    (\vec{u}_1, \vec{u}_2)
-        \begin{pmatrix}
-            x_1 \\ x_2
-        \end{pmatrix} =
-(\vec{v}_1, \vec{v}_2)
-            \begin{pmatrix}
-                x'_1 \\ x'_2
-            \end{pmatrix} = (\vec{u}_1, \vec{u}_2)R\left(\theta\right)\begin{pmatrix}
-                x'_1 \\ x'_2
-            \end{pmatrix}
+    v =  v_{\bm{e}}^i \cdot \bm{x}_i = \bm{e} \cdot \bm{v}_{\bm{e}}
 $$
 
-we get that the relationship between the scalar components is
+or in the $\bm{e}'$ basis
 
 $$
-        \begin{pmatrix}
-            x_1 \\ x_2
-        \end{pmatrix} =
-             R\left(\theta\right)\begin{pmatrix}
-                x'_1 \\ x'_2
-            \end{pmatrix}
+    v =  \bm{e}' \cdot \bm{v}_{\bm{e'}}
 $$
 
-Because $R(\theta) \in \text{SO}(2)$[^3] (or just by verification)
+Equating the two and substituting $\bm{e}' = \bm{e} \cdot  A$
 
 $$
-    R(\theta)^t = R(\theta)^{-1} = R(-\theta)
+\begin{aligned}
+    \bm{e} \cdot \bm{v}_{\bm{e}} &=  \bm{e}' \cdot \bm{v}_{\bm{e}'} \\
+    &= (\bm{e} \cdot A ) \cdot \bm{v}_{\bm{e}'}
+\end{aligned}
 $$
 
-Therefore we can write
+Comparing both sides we see that (since $A$ is a change of basis and therefore invertible)
 
 $$
-\begin{pmatrix}
-                x'_1 \\ x'_2
-            \end{pmatrix} = R(\theta)^{-1} \begin{pmatrix}
-                x_1 \\ x_2
-            \end{pmatrix} = R(-\theta) \begin{pmatrix}
-                x_1 \\ x_2
-            \end{pmatrix}
+    \bm{v}_{\bm{e}'} = A^{-1} \cdot \bm{v}_{\bm{e}}
 $$
 
-which can be summarized as: **rotating a basis by an angle $\theta$ is equivalent to rotating all vectors by the angle $-\theta$**.
+where $A^{-1} := (\tilde{a}_j^i)$ is the inverse of the change of basis.
 
-## Co/contravariance and index notation
-
-We can express the change of basis equation using index notation and the Einstein summation convention[^4]
+In components
 
 $$
-    \vec{v}_i = \sum_{j=1}^2 \vec{u}_j R_i^j = \vec{u}_j R_i^j
+    v_{\bm{e}'}^i = \tilde{a}_j^i v_{\bm{e}}^j
 $$
 
-This transformation describes the new basis vectors as a linear combination of the old basis vectors,
-where $R_i^j$ is the entry in the rotation matrix $R(\theta)$ in the $i$th column and $j$th row[^2].
-Such a transformation is *defined* to be a **covariant transformation** and any other quantity transforms in the same way (i.e. according to the "forward" direction of the change of basis) also called **covariant**.
+This then is the precise meaning of contravariance; because the components transform with the inverse of the change of basis $A^{-1}$ the components are said to *transform contravariantly* and the vector $v$ is said to a contravariant vector. 
 
-Using this notation we can also reiterate the vector transformation law as
+### Covariance
+
+A linear functional $\alpha$ on the vector space $V$ is a linear map from $V$ to $\mathbb{R}$.
+Such a functional is represented in terms of its components with respect to the *dual basis* $\bm{f} := \left(\bm{u}^1, \dots, \bm{u}^n\right)$ (note the upper indices) which are defined by their action on the basis $\bm{e}$
 
 $$
-    x'^i = (R^{-1})_j^i x^j
+    \bm{u}^i (\bm{e}_j) = \delta_j^i
 $$
 
-where $(R^{-1})_j^i$ is the entry in the $j$th column and $i$th row of the inverse rotation matrix $R(\theta)^{-1}$.
-Any quantity that transforms in such a way (i.e. according to the inverse of the change of basis) is called **contravariant**.
+where $\delta_j^i$ the Kronecker delta is defined
 
-The intuition here is that if a vector represents a physical or geomtrical quantity (having the same magnitude and direction after a change of basis) then its *components* must transform contravariantly (in a sense "compensating" for the effect of the change of basis).
+$$
+ \delta_j^i := \begin{cases} 
+  1 \text{ if } i = j \\
+  0 \text{ otherwise}
+\end{cases}
+$$
+
+The components of $\alpha$ with respect to the dual basis $\bm{f}$ can be seen to be $\alpha_i^{\bm{f}} := \alpha(\bm{x}_i)$.
+Naturally, under a change of basis for $V$, i.e. $\bm{e} \rightarrow \bm{e}'$, the components of $\alpha$ also transform due to the change of basis $\bm{f} \rightarrow \bm{f}'$:
+
+$$
+    \begin{aligned}
+        \alpha_i^{\bm{f}'} &:= \alpha(\bm{y}_i) \\
+        &\;= \alpha( a_i^j \bm{x}_j) \\
+        &\;= a_i^j  \alpha( \bm{x}_j) \\
+        &\;= a_i^j  \alpha_j^{\bm{f}} 
+    \end{aligned}
+$$
+
+Define $\bm{\alpha}^{\bm{f}} := \left(\alpha_1^{\bm{f}}, \dots, \alpha_n^{\bm{f}}   \right)$ to be the row vector of components of $\alpha$ and we can write the above index free as $\bm{\alpha}^{\bm{f}'} = \bm{\alpha}^{\bm{f}} \cdot A$.
+This then is the precise meaning of covariance; because the components of linear functionals transform with $A$ (rather than $A^{-1}$) they are said to *transform covariantly* and $\alpha$ is said to be a covariant vector or just *covector*.
+
+## Manifolds
+
+Let $M$ be a $n$-dimensional manifold with an atlas of coordinate charts, i.e. overlapping coordinate systems. 
+For a particular coordinate system $\{x^1, \dots, x^n\}$ the tangent space $TM_p$ at a point $p \in M$ has a basis comprised by partial derivatives with respect to those coordinate functions:
+
+$$
+    \bm{e} = \left\{ \pd{x^1}, \dots, \pd{x^n} \right\}
+$$
+
+In this context a basis is called a *frame*.
+
+### Tangent vectors
+
+If 
+
+$$
+    \bm{e}' = \left\{ \pd{y^1}, \dots, \pd{y^n} \right\}
+$$
+
+is another frame then the frame are related by the *Jacobian*
+
+$$
+    \mathbf{J} := \begin{bmatrix}{\dfrac {\partial y_{1}}{\partial x_{1}}}&\cdots &{\dfrac {\partial y_{1}}{\partial x_{n}}}\\\vdots &\ddots &\vdots \\{\dfrac {\partial y_{n}}{\partial x_{1}}}&\cdots &{\dfrac {\partial y_{n}}{\partial x_{n}}}\end{bmatrix}
+$$
+
+through its inverse
+
+$$
+    \bm{e}' = \bm{e} \cdot \mathbf{J}^{-1}
+$$
+
+This is evident by considering the chain rule
+
+$$
+    \pdd{f}{y^i} = \sum_i \pdd{f}{x^j} \pdd{x^j}{y^i}
+$$
+
+or 
+
+$$
+    \pd{y^i} =  \pdd{x^j}{y^i}\pd{x^j}
+$$
+
+It bears repeating: the basis for the tangent space transform with $\mathbf{J}^{-1}$.
+A *tangent vector* $v$ is a linear combination of coordinate partials 
+
+$$
+    v =  v_{\bm{e}}^i \pd{x^i} = \bm{e} \cdot \bm{v}_{\bm{e}}
+$$
+
+Under a change in coordinate system $\bm{e} \rightarrow \bm{e}'$
+
+$$
+   \bm{e} \cdot \bm{v}_{\bm{e}} = \bm{e}' \cdot \bm{v}_{\bm{e}'} = \left( \bm{e} \cdot \mathbf{J}^{-1} \right) \cdot \bm{v}_{\bm{e}'}
+$$
+
+and hence 
+
+$$
+    \bm{v}_{\bm{e}'} = \mathbf{J} \cdot \bm{v}_{\bm{e}}
+$$
+
+i.e. the components of $\bm{v}_{\bm{e}}$ transform covariantly.
+
+### Differentials
+
+For a particular coordinate system $\{x^1, \dots, x^n\}$ the cotangent space $TM_p^*$ at a point $p \in M$ has a dual basis comprised by differentials (also called 1-forms) $$\;\bm{f} = \left\{\d x^1, \dots ,\d x^n  \right\}$$ defined by the relation
+
+$$
+    \d x^i \left(\pd{x_j}\right) = \delta_j^i
+$$
+
+Just as for the dual basis previously a 1-form $\alpha$ transform covariantly under a change of basis $\bm{e} \rightarrow \bm{e}'$ (and consequent dual basis change $\bm{f} \rightarrow \bm{f}'$):
+
+$$
+    \begin{aligned}
+        \alpha_i^{\bm{f}'} &:= \alpha \left(\pd{y_i}\right) \\
+        &\;= \alpha \left(\pdd{x^j}{y^i}\pd{x^j}\right) \\
+        &\;= \pdd{x^j}{y^i}  \alpha \left(\pd{x^j}\right) \\
+        &\;= \pdd{x^j}{y^i}  \alpha_j^{\bm{f}} \\
+    \end{aligned}
+$$
+
+Hence $\bm{\alpha}^{\bm{f}'} = \bm{\alpha}^{\bm{f}} \cdot \mathbf{J}^{-1}$ and therefore 1-forms transform covariantly.
+
 
 # Foonotes
 
@@ -156,10 +261,6 @@ The intuition here is that if a vector represents a physical or geomtrical quant
     * $B^2 - A C = 0$: parabolic partial differential equation
     * $B^2 - A C > 0$: hyperbolic partial differential equation
 
-[^2]: A good mnemonic is "low-co-row": 
-
-    * since the prototypical covariant object is a basis, i.e. a "row" of vectors, and basis vectors are denoted by lower indices, in general components of covariant objects have lower indices.
-    * since the prototypical contravariant object is a vector, i.e. a column of scalar quantities, in general components of contravariant objects have upper indices.
+[^2]: A good mnemonic is "low-co-row".
   
-[^3]: Special orthogonal group of dimension two.
-[^4]: Repeated indices are summed over.
+[^3]: Einstein summation convetion.
