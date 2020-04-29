@@ -3,6 +3,9 @@ layout: post
 title: Einstein Field Equations
 published: true
 ---
+
+In general theory of relativity (GR) the *Einstein field equations* relate the geometry of space-time with the distribution of matter within it.
+
 $$
 \newcommand{\vec}{\mathbf}
 \newcommand{\d}{\text{d}}
@@ -10,8 +13,6 @@ $$
 \newcommand{\pd}[1]{\frac{\partial}{\partial #1}}
 \newcommand{\pdd}[2]{\frac{\partial #1}{\partial #2}}
 $$
-
-In general theory of relativity (GR) the *Einstein field equations* relate the geometry of space-time with the distribution of matter within it.
 
 # Introduction
 
