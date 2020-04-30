@@ -137,7 +137,7 @@ A linear functional $\alpha$ on the vector space $V$ is a linear map from $V$ to
 Such a functional is represented in terms of its components with respect to the *dual basis* $\bm{f} := \left(\bm{u}^1, \dots, \bm{u}^n\right)$ (note the upper indices) which are defined by their action on the basis $\bm{e}$
 
 $$
-    \bm{u}^i (\bm{e}_j) = \delta_j^i
+    \bm{u}^i (\bm{x}_j) = \delta_j^i
 $$
 
 where $\delta_j^i$ the Kronecker delta is defined
@@ -249,6 +249,33 @@ $$
 
 Hence $\bm{\alpha}^{\bm{f}'} = \bm{\alpha}^{\bm{f}} \cdot \mathbf{J}^{-1}$ and therefore 1-forms transform covariantly.
 
+## Metrics
+
+A *metric tensor* (or just metric) is a bilinear form[^4] $g: V \times V \rightarrow K$. 
+A metric enables identification identification of covariant and contravariant vectors: a contravariant vector $v$ *uniquely determines* a covariant vector $\alpha$ via the metric
+
+$$
+    \alpha(\cdot) := g (v, \cdot)
+$$
+
+Conversely each a covariant $\alpha$ *uniquely determines* a contravariant $v$.
+
+As a result of this identification we can speak of the *covariant components* or *contravariant components* of a vector and one can pass between them using the *musical isomorphism*: Given a vector $v = v^i \bm{x_i}$ , we define its *flat* by 
+
+$$
+v^{\flat } := (g_{ij}v^{i})\mathbf {x}^{j}=v_{j}\mathbf{x} ^{j}
+$$
+
+where $g = g_{ij} x^i \otimes x^j$ is 2-covariant metric that is symmetric and nondegenerate.
+This is referred to as "lowering an index".
+In the same way, given a covector field $\alpha = \alpha_i \bm{u}^i$ , we define its *sharp* by
+
+$$
+\alpha^{\sharp }:=(g^{ij}\alpha_{i})\bm {u} _{j}=\alpha^{j}\bm{u}_{j}
+$$
+
+where $g^{ij}$ are the components of the inverse metric tensor (given by the entries of the inverse matrix to $g_{ij}$).
+Taking the sharp of a covector field is referred to as "raising an index".
 
 # Foonotes
 
@@ -265,3 +292,5 @@ Hence $\bm{\alpha}^{\bm{f}'} = \bm{\alpha}^{\bm{f}} \cdot \mathbf{J}^{-1}$ and t
 [^2]: A good mnemonic is "low-co-row".
   
 [^3]: Einstein summation convetion.
+
+[^4]: A map from the vector space to the ground field that's linear in both of its arguments.
