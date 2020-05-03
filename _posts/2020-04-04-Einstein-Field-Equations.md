@@ -226,17 +226,23 @@ $$
     \bm{v}_{\bm{e}'} = \mathbf{J} \cdot \bm{v}_{\bm{e}}
 $$
 
-i.e. the components of $\bm{v}_{\bm{e}}$ transform covariantly.
+i.e. the components of $\bm{v}_{\bm{e}}$ transform contravariantly.
 
 ### Differentials
 
-For a particular coordinate system $\{x^1, \dots, x^n\}$ the cotangent space $TM_p^*$ at a point $p \in M$ has a dual basis comprised by differentials (also called 1-forms) $$\;\bm{f} = \left\{\d x^1, \dots ,\d x^n  \right\}$$ defined by the relation
+For a particular coordinate system $\{x^1, \dots, x^n\}$ the cotangent space $TM_p^*$ at a point $p \in M$ has a dual basis comprised by differentials (also called *1-forms*) $$\;\bm{f} = \left\{\d x^1, \dots ,\d x^n  \right\}$$ defined by the relation
 
 $$
     \d x^i \left(\pd{x_j}\right) = \delta_j^i
 $$
 
-Just as for the dual basis previously a 1-form $\alpha$ transform covariantly under a change of basis $\bm{e} \rightarrow \bm{e}'$ (and consequent dual basis change $\bm{f} \rightarrow \bm{f}'$):
+The dual basis elements transform contravariantly:
+
+$$
+    \d y^i = \pdd{y^i}{x^j} \d x^j
+$$
+
+In opposition to the dual basis, the components of a 1-form $\alpha$ transform covariantly under a change of basis $\bm{f} \rightarrow \bm{f}'$ (induced by a change of basis $\bm{e} \rightarrow \bm{e}'$):
 
 $$
     \begin{aligned}
@@ -326,6 +332,13 @@ $$
 
 where $g^{ij}$ are the components of the inverse metric tensor (given by the entries of the inverse matrix to $g_{ij}$).
 Taking the sharp of a covector field is referred to as "raising an index".
+
+# Covariant derivatives
+
+Invariably (pardon the pun) when doing physics you'll need derivatives of quantities. 
+This prompts the question: how do derivatives of tensors transform under a change of coordinate system?
+
+
 
 # Foonotes
 
