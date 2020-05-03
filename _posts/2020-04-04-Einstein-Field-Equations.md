@@ -249,9 +249,59 @@ $$
 
 Hence $\bm{\alpha}^{\bm{f}'} = \bm{\alpha}^{\bm{f}} \cdot \mathbf{J}^{-1}$ and therefore 1-forms transform covariantly.
 
-## Metrics
+## $n$-Tensors
+
+Vectors can be combined[^5] to form higher rank tensors; the combination of two contravariant vectors $v,w$, sometimes denoted in a coordinate free fashion as $T := v \otimes w$ or in coordinates as $T^{mn} := v^m w^n$, is called a *rank 2* tensor or *2-tensor*.
+Contravariant and covariant vectors can also be combined; the combination of a covariant $v$ and a contravariant $w$, denoted $T_m^n := v_m w^n$ is called a rank 2 *mixed tensor*. 
+Note that the dimension of the tensor space is the product of the dimensions of the factor spaces, i.e. $\dim(V \otimes W) = \dim(V) \times \dim(W)$ but the *arity* of the tensor is the number of factor spaces. 
+The preceding constructions naturally extend to higher arities. 
+Incidentally a scalar is a rank 0.
+
+Higher rank tensors transforms according to how their factors transform
+
+$$
+    \begin{aligned}
+        T^{mn}_{\bm{e}'} &:= v_{\bm{e}'}^m w_{\bm{e}'}^n \\
+        &\;= \sum_{i} \pdd{y^m}{x^i} v_{\bm{e}}^i \sum_{j} \pdd{y^n}{x^j} w_{\bm{e}}^j  \\ 
+        &\;= \sum_{ij} \pdd{y^m}{x^i}  \pdd{y^n}{x^j} v_{\bm{e}}^i w_{\bm{e}}^j  \\ 
+        &\;= \sum_{ij} \pdd{y^m}{x^i}  \pdd{y^n}{x^j} T^{ij}_{\bm{e}}  \\ 
+    \end{aligned}
+$$
+
+and so we see that $T^{ij}_{\bm{e}}$ transforms with two applications of $\mathbf{J}$ and so it is twice contravariant (hence the two contravariant indices).
+Analogously a covariant rank 2 tensor transforms with two applications of $\mathbf{J}^{-1}$
+
+$$
+        T_{mn}^{\bm{e}'} = \pdd{x^i}{y^m}  \pdd{x^j}{y^n} T_{ij}^{\bm{e}}
+$$
+
+### Metric tensors
 
 A *metric tensor* (or just metric) is a bilinear form[^4] $g: V \times V \rightarrow K$. 
+Since 1-forms map vectors to numbers it should be no surprise that a metric is the tensor product of 1-forms:
+
+$$
+    g := g_{mn} \d x^m \d x^n \\
+$$
+
+For intuition consider $n$-dimensional Pythagoras' theorem
+
+$$
+    \begin{aligned}
+        \d s^2 &:= \left(\d x^1\right)^2 + \left(\d x^2\right)^2 + \cdots + \left(\d x^n\right)^2 \\
+        &\;= \d x^m \d x^m \\ 
+        &\;= \d x^m \d x^n \delta_{mn} \\ 
+    \end{aligned}
+$$
+
+where $\delta_{mn}$ is called the *flat* metric (non-zero terms only on the diagonal); it's exactly the non-flat metrics that are interesting in GR (non-zero terms off the diagonal).
+
+How does the metric transform under a change of coordinates? Like a rank 2 covariant tensor:
+
+$$
+    g_{mn}^{\bm{e}'} = \pdd{x^i}{y^m}  \pdd{x^j}{y^n} g_{ij}^{\bm{e}}
+$$
+
 A metric enables identification identification of covariant and contravariant vectors: a contravariant vector $v$ *uniquely determines* a covariant vector $\alpha$ via the metric
 
 $$
@@ -294,3 +344,5 @@ Taking the sharp of a covector field is referred to as "raising an index".
 [^3]: Einstein summation convetion.
 
 [^4]: A map from the vector space to the ground field that's linear in both of its arguments.
+
+[^5]: Actually it's vector spaces; The *tensor product* $V \otimes W$ of two vector spaces $V$ and $W$ (over the same field) is itself a vector space, endowed with the operation of bilinear composition, denoted by $\otimes$, from ordered pairs in the Cartesian product $V \times W$ to $V \otimes W$ in a way that generalizes the outer product (quotienting).
