@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Einstein Field Equations
+title: Tensor analysis
 published: true
 ---
 
-In general theory of relativity (GR) the *Einstein field equations* relate the geometry of space-time with the distribution of matter within it.
+<!-- In general theory of relativity (GR) the *Einstein field equations* relate the geometry of space-time with the distribution of matter within it. -->
 
 $$
 \newcommand{\vec}{\mathbf}
@@ -14,7 +14,7 @@ $$
 \newcommand{\pdd}[2]{\frac{\partial #1}{\partial #2}}
 $$
 
-# Introduction
+<!-- # Introduction
 
 Einstein's field equations describe the curvature of space as a function of energy and momentum; they're a system of ten coupled, nonlinear, hyperbolic-elliptic partial differential equations[^1]. 
 Typically the equations are expressed in tensor form as 
@@ -25,11 +25,11 @@ $$
 
 where $R_{\mu \nu }$ is the Ricci curvature tensor, $R$ is the scalar curvature, $g_{\mu \nu }$ is the metric tensor, $\Lambda$ is the cosmological constant, $G$ is Newton's gravitational constant, $c$ is the speed of light in vacuum, and $T_{\mu \nu }$ is the stress–energy tensor. Each covariant (explained in the forthcoming) index $\mu, \nu$ can take on values $0,1,2,3$ thereby giving 16 different equations in principle, but it turns out each of the tensors is symmetric thereby reducing the number of unique equations to ten.
 
-# Tensors
+# Tensors -->
 
-## Covariance and contravariance of vectors
+# Covariance and contravariance of vectors
 
-### Intuition
+## Intuition
 
 Covariance and contravariance characterize how quantities (typically vectors) measured in some space transform when the space undergoes a change of basis or coordinate system. 
 A *covariant* quantity has components that transform in the same way as the basis (to be clarified). 
@@ -80,7 +80,7 @@ $$
 
 or terms of components $\bm{y}_j = a_j^i \bm{x}_i$.
 
-### Contravariance
+## Contravariance
 
 Let $$v = v_{\bm{e}}^i \cdot \bm{x}_{i}$$ be a vector where $v_{\bm{e}}^i$ are the components of the vector relative to the $\bm{e}$ basis.
 
@@ -131,7 +131,7 @@ $$
 
 This then is the precise meaning of contravariance; because the components transform with the inverse of the change of basis $A^{-1}$ the components are said to *transform contravariantly* and the vector $v$ is said to a contravariant vector. 
 
-### Covariance
+## Covariance
 
 A linear functional $\alpha$ on the vector space $V$ is a linear map from $V$ to $\mathbb{R}$.
 Such a functional is represented in terms of its components with respect to the *dual basis* $\bm{f} := \left(\bm{u}^1, \dots, \bm{u}^n\right)$ (note the upper indices) which are defined by their action on the basis $\bm{e}$
@@ -164,7 +164,7 @@ $$
 Define $\bm{\alpha}^{\bm{f}} := \left(\alpha_1^{\bm{f}}, \dots, \alpha_n^{\bm{f}}   \right)$ to be the row vector of components of $\alpha$ and we can write the above index free as $\bm{\alpha}^{\bm{f}'} = \bm{\alpha}^{\bm{f}} \cdot A$.
 This then is the precise meaning of covariance; because the components of linear functionals transform with $A$ (rather than $A^{-1}$) they are said to *transform covariantly* and $\alpha$ is said to be a covariant vector or just *covector*.
 
-## Manifolds
+# Manifolds
 
 Let $M$ be a $n$-dimensional manifold with an atlas of coordinate charts, i.e. overlapping coordinate systems. 
 For a particular coordinate system $\{x^1, \dots, x^n\}$ the tangent space $TM_p$ at a point $p \in M$ has a basis comprised by partial derivatives with respect to those coordinate functions:
@@ -175,7 +175,7 @@ $$
 
 In this context a basis is called a *frame*.
 
-### Tangent vectors
+## Tangent vectors
 
 If 
 
@@ -228,7 +228,7 @@ $$
 
 i.e. the components of $\bm{v}_{\bm{e}}$ transform contravariantly.
 
-### Differentials
+## Differentials
 
 For a particular coordinate system $\{x^1, \dots, x^n\}$ the cotangent space $TM_p^*$ at a point $p \in M$ has a dual basis comprised by differentials (also called *1-forms*) $$\;\bm{f} = \left\{\d x^1, \dots ,\d x^n  \right\}$$ defined by the relation
 
@@ -255,7 +255,7 @@ $$
 
 Hence $\bm{\alpha}^{\bm{f}'} = \bm{\alpha}^{\bm{f}} \cdot \mathbf{J}^{-1}$ and therefore 1-forms transform covariantly.
 
-## $n$-Tensors
+# $n$-Tensors
 
 Vectors can be combined[^5] to form higher rank tensors; the combination of two contravariant vectors $v,w$, sometimes denoted in a coordinate free fashion as $T := v \otimes w$ or in coordinates as $T^{mn} := v^m w^n$, is called a *rank 2* tensor or *2-tensor*.
 Contravariant and covariant vectors can also be combined; the combination of a covariant $v$ and a contravariant $w$, denoted $T_m^n := v_m w^n$ is called a rank 2 *mixed tensor*. 
@@ -281,7 +281,7 @@ $$
         T_{mn}^{\bm{e}'} = \pdd{x^i}{y^m}  \pdd{x^j}{y^n} T_{ij}^{\bm{e}}
 $$
 
-### Metric tensors
+## Metric tensors
 
 A *metric tensor* (or just metric) is a bilinear form[^4] $g: V \times V \rightarrow K$. 
 Since 1-forms map vectors to numbers it should be no surprise that a metric is the tensor product of 1-forms:
@@ -333,16 +333,9 @@ $$
 where $g^{ij}$ are the components of the inverse metric tensor (given by the entries of the inverse matrix to $g_{ij}$).
 Taking the sharp of a covector field is referred to as "raising an index".
 
-# Covariant derivatives
-
-Invariably (pardon the pun) when doing physics you'll need derivatives of quantities. 
-This prompts the question: how do derivatives of tensors transform under a change of coordinate system?
-
-
-
 # Foonotes
 
-[^1]: Assume a general, linear, second-order PDE in two variables $u(x,y)$
+<!-- [^1]: Assume a general, linear, second-order PDE in two variables $u(x,y)$
 
     $$
         Au_{xx}+2Bu_{xy}+Cu_{yy}+\cdots {\mbox{(lower order terms)}}=0,
@@ -350,7 +343,7 @@ This prompts the question: how do derivatives of tensors transform under a chang
     This form of the PDE resembles a conic section and naturally suggests a classification based on the value of the discriminant
     * $B^2 - A C < 0$: elliptic partial differential equation
     * $B^2 - A C = 0$: parabolic partial differential equation
-    * $B^2 - A C > 0$: hyperbolic partial differential equation
+    * $B^2 - A C > 0$: hyperbolic partial differential equation -->
 
 [^2]: A good mnemonic is "low-co-row".
   
