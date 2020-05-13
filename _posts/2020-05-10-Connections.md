@@ -4,6 +4,8 @@ title: Connections
 published: true
 ---
 
+Connections are a means to differentiate vectors relative to vectors.
+
 # Tangent vectors
 The most general definition of a vector tangent to a manifold involves *derivations*.
 $$
