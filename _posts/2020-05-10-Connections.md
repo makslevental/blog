@@ -21,7 +21,7 @@ $$
 \newcommand{\evalat}[1]{\Big|_{#1}}
 $$
 
-Let $M$ be a smooth manifold; every point $p \in M$ has a neighborhood $U \subset M$ that can be mapped smoothly[^1] to $\R^n$ for some $n$ (the dimension of the manifold). 
+Let $M$ be a smooth manifold; every **point** $p \in M$ has a neighborhood $U \subset M$ that can be mapped smoothly[^1] to $\R^n$ for some $n$ (the dimension of the manifold). 
 **Therefore each $p$ can be identified with its coordinates**[^2] $\phi(p) = \parens{x^1(p), \dots, x^n(p)}$.
 
 Associated with each point is the *tangent space* $T_p M$. 
@@ -90,7 +90,7 @@ $$
 Collecting all of these into a column we get 
 
 $$
-\vec{v}(w) = \begin{bmatrix}
+\vec{v}(\vec{w}) = \begin{bmatrix}
      D_{\vec{v}} w^1 \\
      \vdots \\
      D_{\vec{v}} w^n
@@ -98,14 +98,22 @@ $$
 $$
 
 where $\vec{J}$ is the Jacobian of $\vec{w}(p)$. 
+This is called the *Euclidean connection*.
 Alternatively in components
 
 $$
-    (vw)^i = v w^i = \sum_j v^j \p_j w^i
+    (\vec{v}(\vec{w}))^i = \vec{v}(w^i) = \sum_j v^j \p_j w^i
 $$
 
 Unfortuntely this doesn't generalize so we define abstract differentiation of one vector field with respect to another.
-Define $TM := \bigsqcup_{p \in M}$ as the *tangent bundle* of $M$; an element of the tangent bundle is of the form $(p, \vec{v})$ with $p \in M$ and $\vec{v} \in T_p M$.
+
+Define 
+
+$$
+    TM := \bigsqcup_{p \in M} T_p M
+$$ 
+
+as the *tangent bundle* of $M$; an element of the tangent bundle is of the form $(p, \vec{v})$ with $p \in M$ and $\vec{v} \in T_p M$.
 In fact $TM$ has a smooth manifold structure[^6]; let $\pi: TM \rightarrow M$ be the bundle projection.
 A *section* of $TM$ is a map $F:M \rightarrow TM$ is an assignment of a vector to every $p \in M$, i.e. vector field on $M$. Thus, a vector field is smooth if the section $F$ is a smooth map between manifolds.
 
@@ -132,6 +140,38 @@ $\nabla_{\vec{v}} \vec{w}$ is also called the *covariant derivative* of $\vec{w}
 
 <!-- each element of the tangent space is the equivalence of class of curves through $p$ that agree on a neighborhood containing $p$ and  -->
 
+# Christoffel symbols
+
+Suppose we have a *local frame* $\braces{\vec{e}_i}$ on a manifold $M$, i.e. a smoothly varying vector field such that at each point $p$ the set of tangent vectors $\braces{\vec{e}_i(p)}$ is basis the tangent space $T_p M$.
+Since $\braces{\vec{e}_i}$ is a basis and $\nabla$ maps pairs of vector fields to a vector field we can, for each pair $i,j$, expand $\nabla _{\vec{e}_i} \vec{e}_j$ in terms of the same basis/frame
+
+$$
+    \begin{aligned}
+         \nabla _{\vec{e}_i} \vec{e}_j &= \Gamma_{ij}^1 \vec{e}_1 + \cdots + \Gamma_{ij}^n \vec{e}_n \\
+         &= \Gamma_{ij}^k \vec{e}_k
+    \end{aligned}
+$$
+
+where $\Gamma_{ij}^k$ expansion coefficients, called the *Christoffel symbols*.
+Then for arbitrary vector fields $\vec{v} := v^i \vec{e}_i$ and $\vec{w} := w^j \vec{e}_j$ and by the product rule above
+
+$$
+    \nabla_{\vec{v}} \vec{w} = \nabla_{\vec{v}} \parens{w^j \vec{e}_j} = w^j \nabla_{\vec{v}} \vec{e}_j + {\vec{v} (w^j)} \vec{e}_j
+$$
+
+By linearity in $\vec{v}$ the first term can be rewritten
+
+$$
+    w^j \nabla_{\vec{v}} \vec{e}_j = w^j \nabla_{v^i \vec{e}_i} \vec{e}_j = v^i w^j \nabla_{\vec{e}_i} \vec{e}_j = v^i w^j \Gamma_{ij}^k \vec{e}_k
+$$
+
+Renaming dummy indices we get 
+
+$$
+    \nabla_{\vec{v}} \vec{w} = \parens{ v^i w^j \Gamma_{ij}^k + \vec{v}(w^k) } \vec{e}_k
+$$
+
+Notice that we recover the Euclidean connection by setting $\Gamma_{ij}^k=0$.
 
 # Foonotes
 
