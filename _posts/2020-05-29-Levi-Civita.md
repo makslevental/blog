@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Levi-Civita
-published: true
+published: false
 ---
 
 If a manifold is *Riemannian* (has a metric) then there's a unique connection (i.e. covariant derivative) that's compatible with that metric; the *Levi-Civita* connection is the unique connection that's compatible with the metric.
