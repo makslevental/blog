@@ -18,7 +18,7 @@ Before CS, I got my BS in Pure Math at Florida State University and then taught 
 
 <p align="center">
   <img src="/images/pc.jpg"/>
-</p
+</p>
 
 # CV/Resume
 
