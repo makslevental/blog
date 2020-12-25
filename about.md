@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-# Bio
+## Bio
 
 I'm a ~3rd year CS PhD student at University of Chicago in [Ian Foster's](https://labs.globus.org/) distributed systems group.
 Broadly, my interests lie at the intersection of distributed systems and Deep Learning/Machine Learning/Computer Vision, with scientific applications.
@@ -20,7 +20,7 @@ Before CS, I got my BS in Pure Math at Florida State University and then taught 
   <img src="/images/pc.jpg"/>
 </p>
 
-# CV/Resume
+## CV/Resume
 
 <embed src="https://drive.google.com/viewerng/
 viewer?embedded=true&url=https://github.com/makslevental/resume/raw/master/maksim_levental_resume.pdf" width="1000" height="1000">
