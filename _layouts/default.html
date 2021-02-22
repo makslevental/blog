@@ -4,10 +4,10 @@
 <head>
   <script>
     MathJax = {
-      loader: { load: ['[tex]/cancel'] },
+      loader: { load: ['[tex]/cancel', '[tex]/boldsymbol'] },
       options: { skipHtmlTags: ['svg', 'script', 'noscript', 'style', 'textarea'] },
       tex: {
-        packages: { '[+]': ['cancel'] },
+        packages: { '[+]': ['cancel', 'boldsymbol'] },
         tags: 'all',
         inlineMath: [['$', '$'], ['\\(', '\\)']],
         processEnvironments: true,
@@ -23,9 +23,17 @@
   <script src="https://togetherjs.com/togetherjs-min.js"></script>
   <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
   </script>
-
-
-  </script>
+  <style>
+    .lemma {
+  background-color: #aee3fc;
+    }
+    .theorem {
+  background-color: rgb(247, 136, 117);
+    }
+    .proof {
+  background-color: rgb(250, 236, 110);
+    }
+  </style>
   <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
 
   {% include meta.html %}

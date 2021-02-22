@@ -1,0 +1,134 @@
+---
+layout: post
+title: MinHash
+published: false
+use_math: true
+---
+
+MinHash is a technique for quickly estimating how similar two sets are.
+
+# Definitions
+
+The *Jacard index* (or *Jacard similarity*) of two sets $A,B$ is the ratio or the intersection to the union
+
+$$
+ J(A,B) = \frac{|A \cap B|}{|A \cup B|} = \frac{|A \cap B|}{|A| + |B| - |A \cap B|}
+$$
+
+Notice that $0 \leq J(A,B) \leq 1$ where $J(A,B)=0$ when $A \cap B = \emptyset$ and $J(A,B)=1$ when $A = B$. 
+Let $h$ be a cryptographic hash function[^1] and 
+
+$$
+    h_{\min}(S) := \argmin_{x \in S} h(x)
+$$
+
+Note that $h_{\min}(S)$ always exists for a finite set $S$.
+
+# Intuition
+
+The critical insight of MinHash is that $h_{\min}(A) = h_{\min}(B)$ if and only if $A$ and $B$ have their minimal element in common, i.e. in their intersection.
+Since the hash function will hash same $x$ to same values, the probability that $h_{\min}(A)$ is the same element as $h_{\min}(B)$ is equal to the cardinality of that intersection $|A \cap B|$ divided by the cardinality of the total number of elements in both $A$ and $B$ (taking into account double counting $|A \cup B|$).
+Therefore
+
+$$
+\P{h_{\min}(A) = h_{\min}(B)} = J(A,B)
+$$
+
+The way to intuitively understand this is to consider the cases for where the minimum elements $h_{\min}(A), h_{\min}(B)$ might lie and the implications on equality:
+
+1. $h_{\min}(A)$ lies in $A \setminus B$ (complement of $B$ in $A$). Then $h_{\min}(A) \notin A \cap B$ **but also** necessarily $h_{\min}(A) \neq h_{\min}(B)$.
+2. Similarly for $h_{\min}(B)$.
+3. $h_{\min}(A)$ lies in $A \cap B$. Then $h_{\min}(A) \neq h_{\min}(B)$ only if $h_{\min}(B) \in B \setminus A$ (second case).
+4. Similarly for $h_{\min}(B)$.
+
+These events partition the event space and therefore $P \big(h_{\min}(A) = h_{\min}(B)\big)$ is directly a function them (the events).
+
+# Unbiased estimator
+
+As a result of the above, the random variable 
+
+$$X = \left\{h_{\min}(A) = h_{\min}(B)\right\}$$
+
+is an unbiased estimator for the Jacard similarity of two sets $A,B$.
+The problem is that it is high-variance - it only ever takes on values 0 or 1.
+The solution to reducing the variance is to use either $k$ hash functions or by extending to "bottom-$k$" elements.
+
+## $k$ hash functions
+
+Using $k$ different, cryptographically strong, hash functions $h_i$ and then counting the number of hash functions $\lvert h_i \rvert$ for which $h_{i, \min}(A) = h_{i,\min}(B)$.
+Let $\bar{X}$ be the average of those $k$ estimators for $J(A,B)$.
+Since each independent estimator is unbiased, $\bar{X}$ is also an unbiased estimator for $J(A,B)$.
+The variance $\sigma_{\bar{X}}^2$ of $\bar{X}$ is 
+
+$$
+\begin{aligned}
+    \sigma_{\bar{X}}^2 &= \E{\left(\bar{X} - \E{\bar{X}}\right)^2} \\
+    &= \E{\bar{X}^2 + \E{\bar{X}}^2 - 2 \bar{X}\E{\bar{X}}} \\
+    &= \E{\bar{X}^2} + \E{\bar{X}}^2 - 2 \E{\bar{X}}\E{\bar{X}} \\
+    &= \E{\bar{X}^2} - \E{\bar{X}}^2  \\
+    &= \frac{1}{k^2}\left(\sum_{i=1}^k \sum_{j=1}^k \E{X_i X_j}  - \sum_{i=1}^k \sum_{j=1}^k \E{X_i} \E{X_j}\right)  \\
+    &= \frac{1}{k^2}\left(\sum_{i=1}^k \sum_{j=1}^k \text{Cov}(X_i, X_j) \right) \\
+    &= \frac{1}{k^2}\left(\sum_{i=1}^k \sigma_{X_i}^2 + 2 \sum_{i<j} \text{Cov}(X_i, X_j) \right) \quad \text{by symmetry of } \text{Cov}(X_i, X_j)
+\end{aligned}
+$$
+
+Finally since $X_i$ are independent ($\text{Cov}(X_i, X_j)=0$ for $i\neq j$) we have 
+
+$$
+\sigma_{\bar{X}}^2 = \frac{1}{k^2} \sum_{i=1}^k \sigma_{X_i}^2 = \frac{1}{k} \sigma_{X}^2
+$$
+
+and hence the expected error (the standard deviation) for this estimator of $J(A,B)$ is $O(1/\sqrt{k})$.
+This is an analysis *in expectation* i.e. for any constant $\varepsilon > 0$ there is a constant $k = O(1/\varepsilon^2)$ such that the expected error of the estimate is at most $\varepsilon$.
+For example, 400 hashes would be required to estimate $J(A,B)$ with an expected error less than or equal to .05.
+To develop a *worst case analysis*, i.e. what is the objective probability of failure, we need to use a concentration inequality[^2] called the *Hoeffding inequality*.
+
+**[Hoeffding inequality](https://en.wikipedia.org/wiki/Hoeffding%27s_inequality)**: Let $X_1, \dots, X_k$ be independent random variables bounded such that $0 \leq X_i \leq 1$.
+Then the empirical mean $\bar{X}$ satisfies
+
+$$\P { \lvert \bar{X}- \E{\bar{X}} \rvert \geq \delta}\leq 2e^{-2k\delta^{2}}$$
+
+for any $\delta> 0$.
+By corollary
+
+$$\P { \lvert \bar{X}- \E{\bar{X}} \rvert < \delta} > 1 - 2e^{-2k\delta^{2}}$$
+
+In general, we want to push $\P { \lvert \bar{X}- \E{\bar{X}} \rvert < \delta}$ as close to 1 as possible for some fixed tolerance $\delta$ for deviation from $\E{\bar{X}} \equiv J(A,B)$.
+Therefore, for some closeness probability $1-\varepsilon$ (this particular form to make the math workout more nicely)
+
+$$ 
+1 - 2e^{-2k\delta^{2}} > 1 - \varepsilon \iff \frac{1}{-2\delta^2} \log \left( \frac{\varepsilon}{2}\right) \leq k \iff \frac{1}{2\delta^2} \log \left( \frac{2}{\varepsilon}\right) \leq k
+$$
+
+i.e. $k = \Omega(2/\varepsilon)$ for fixed $\delta$.
+For example for tolerance $\delta = 0.01$ and probability $.95 = 1-0.05$ we have
+
+$$
+k \geq 20000 \times 3.689 \approx 73778
+$$
+
+which is quite a lot.
+For $\delta = 0.1$ we have a more reasonable $738$.
+
+## Bottom-$k$ elements
+
+For a hash function $h$, let $h_{(k)}(S)$ be the "bottom-$k$" elements of $S$, i.e. the $k$ elements of $S$ that take on the smallest values of $h$.
+Then $h_{(k)}(S)$ functions as a signature for a set and the similarity of any two sets can be approximated by comparing their signatures.
+
+Specifically, let $A$ and $B$ be two sets.
+Then
+
+$$
+    X = h_{(k)} \left( h_{(k)}(A) \cup h_{(k)}(B) \right) = h_{(k)} \left( A \cup B\right)
+$$
+
+is a random sample of $A \cup B$ of cardinality $k$ (given that $h$ is a cryptographic hash function).
+Then $Y = X \cap h_{(k)} (A) \cap h_{(k)} (B)$ is the set of members of $X$ that are also in the intersection $A \cap B$.
+Therefore $\lvert Y \rvert / k $ is an unbiased estimator of $J(A,B)$.
+
+By standard [Chernoff bounds](https://en.wikipedia.org/wiki/Chernoff_bound) for sampling without replacement, this version of MinHash has the same expected error $O(1/\sqrt{k})$.
+
+# Footnotes
+
+[^1]: A hash function that behave as much as possible like a random function while still being deterministic and efficiently computable; in particular it should be collision-free.
+[^2]: A concentration inequality provide bounds on how a random variable deviates from some value (typically, its expected value).
