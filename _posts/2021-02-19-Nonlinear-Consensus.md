@@ -562,6 +562,7 @@ $$
 \lambda ^{\rm {T}}(T)=\Psi _{x}(x(T))
 \label{eqn:four}
 $$
+
 Note that eqn. ($\ref{eqn:four}$) only applies when $x(T)$ is free. If it is fixed, then this condition is not necessary for an optimum.
 
 These four conditions are the necessary conditions for an optimal control. 
