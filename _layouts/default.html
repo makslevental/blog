@@ -7,9 +7,10 @@
       loader: { load: ['[tex]/cancel', '[tex]/boldsymbol'] },
       options: { skipHtmlTags: ['svg', 'script', 'noscript', 'style', 'textarea'] },
       tex: {
-        packages: { '[+]': ['cancel', 'boldsymbol'] },
+        packages: { '[+]': ['cancel', 'boldsymbol', 'base', 'ams'] },
         tags: 'all',
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
         processEnvironments: true,
         processEscapes: true,
       },

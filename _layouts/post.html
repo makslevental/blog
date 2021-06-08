@@ -22,11 +22,12 @@ $$%
 \newcommand{\P}[1]{\text{P}\left( #1 \right)}%
 \newcommand{\bm}[1]{\boldsymbol{#1}}%
 $$
+
 <article class="post">
   <h1>{{ page.title }}</h1>
 
   <div class="entry">
-    {% include toc.html html=content %}
+    {% include toc.html html=content sanitize=true %}
     {{ content }}
   </div>
 
