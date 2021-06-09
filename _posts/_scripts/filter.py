@@ -22,7 +22,7 @@ if file_path is not None and os.path.isfile(file_path):
     data = parser.from_file(file_path, xmlContent=True)
     xhtml_data = BeautifulSoup(data['content'], features="html.parser")
     for page, content in enumerate(xhtml_data.find_all('div', attrs={'class': 'page'})):
-        for fig_r in [r".*fig:.*", r".*tab:.*", r".*lst:.*"]:
+        for fig_r in [r"fig:.*", r"tab:.*", r"lst:.*", r"alg:.*"]:
             for fig_label in re.findall(fig_r, str(content).replace("<p>", "").replace("</p>", ""), re.MULTILINE):
                 label_to_fignum[fig_label] = page+1
 

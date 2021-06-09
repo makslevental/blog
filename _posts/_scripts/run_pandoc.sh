@@ -1,8 +1,8 @@
 set -e
 
-TEXFILE_DIR=/Users/maksim/dev_projects/school_work/notes/accept_reject/
+TEXFILE_DIR=/Users/maksim/dev_projects/school_work/notes/basic_graph_algos
 cp latexpand $TEXFILE_DIR/
-export PROJECTNAME=accept_reject
+export PROJECTNAME=graphs
 
 TEXFILE=conf.tex
 BIBLIO=
@@ -15,6 +15,7 @@ pushd $TEXFILE_DIR
 perl latexpand $TEXFILE > newarticle.tex
 TEXFILE=newarticle.tex
 
+sed -i bk 's/\begin{figure}\[.*\]/\begin{figure*}/g' $TEXFILE 
 sed -i bk 's/\begin{figure}/\begin{figure*}/g' $TEXFILE 
 sed -i bk 's/\end{figure}/\end{figure*}/g' $TEXFILE 
 sed -i bk 's/\\inputencoding{utf8}//g' $TEXFILE
@@ -74,10 +75,10 @@ fi
 
 python mathbf_fix.py $MD_FNAME
 
-pushd $TEXFILE_DIR
+# pushd $TEXFILE_DIR
 
-rm ${TEXFILE}*
-rm ${FLOATS_TEXFILE}_labeled*
-rm $FLOATS_TEXFILE*
+# rm ${TEXFILE}*
+# rm ${FLOATS_TEXFILE}_labeled*
+# rm $FLOATS_TEXFILE*
 
-popd
+# popd
