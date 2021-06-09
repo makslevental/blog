@@ -4,13 +4,9 @@ import sys
 
 import os
 import re
-import shutil
-import io
 import sys
-from subprocess import call
-from tempfile import mkdtemp
 
-from pandocfilters import toJSONFilter, Para, Para, RawBlock, Div, Math, Link, stringify, Str
+from pandocfilters import toJSONFilter, Para, Para, RawBlock, Div, Math, Link, Str
 
 from bs4 import BeautifulSoup
 from tika import parser

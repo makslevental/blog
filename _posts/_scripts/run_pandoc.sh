@@ -1,10 +1,10 @@
 set -e
 
-TEXFILE_DIR=/Users/maksim/dev_projects/pytorch_abstraction_comparison/tex
-export PROJECTNAME=pytorch_comparison
+TEXFILE_DIR=/Users/maksim/dev_projects/merf_paper
+export PROJECTNAME=fsp_steering
 
 TEXFILE=main.tex
-BIBLIO=main.bib
+BIBLIO=biblio.bib
 FLOATS_TEXFILE=floats
 export FLOATS_LABELED=$TEXFILE_DIR/${FLOATS_TEXFILE}_labeled.pdf
 echo $FLOATS_LABELED
