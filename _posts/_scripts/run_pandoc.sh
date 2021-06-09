@@ -75,10 +75,10 @@ fi
 
 python mathbf_fix.py $MD_FNAME
 
-# pushd $TEXFILE_DIR
+pushd $TEXFILE_DIR
 
-# rm ${TEXFILE}*
-# rm ${FLOATS_TEXFILE}_labeled*
-# rm $FLOATS_TEXFILE*
+rm ${TEXFILE}*
+rm ${FLOATS_TEXFILE}_labeled*
+rm $FLOATS_TEXFILE*
 
-# popd
+popd
