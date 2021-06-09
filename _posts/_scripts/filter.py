@@ -18,7 +18,7 @@ def ppprint(x, lbl=""):
 label_to_fignum = {}
 
 file_path = os.environ.get('FLOATS_LABELED', None)
-if file_path is not None:
+if file_path is not None and os.path.isfile(file_path):
     data = parser.from_file(file_path, xmlContent=True)
     xhtml_data = BeautifulSoup(data['content'], features="html.parser")
     for page, content in enumerate(xhtml_data.find_all('div', attrs={'class': 'page'})):
@@ -30,7 +30,7 @@ if file_path is not None:
 ppprint(label_to_fignum, "label_to_fignum")
 
 N_FIGS = 0
-N_TABS = min([v for k, v in label_to_fignum.items() if "tab:" in k]) - 1
+N_TABS = min([v for k, v in label_to_fignum.items() if "tab:" in k], default=0) - 1
 
 fig = f"""
 <p align="center">
