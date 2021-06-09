@@ -1,11 +1,11 @@
 set -e
 
-TEXFILE_DIR=/Users/maksim/dev_projects/school_work/notes/expectation_maximization/
+TEXFILE_DIR=/Users/maksim/dev_projects/school_work/notes/accept_reject/
 cp latexpand $TEXFILE_DIR/
-export PROJECTNAME=expectation_maximization
+export PROJECTNAME=accept_reject
 
-TEXFILE=exp.tex
-BIBLIO=gentle.bib
+TEXFILE=conf.tex
+BIBLIO=
 FLOATS_TEXFILE=floats
 export FLOATS_LABELED=$TEXFILE_DIR/${FLOATS_TEXFILE}_labeled.pdf
 echo $FLOATS_LABELED
