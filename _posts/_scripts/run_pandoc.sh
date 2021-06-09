@@ -1,11 +1,11 @@
 set -e
 
-TEXFILE_DIR=/Users/maksim/dev_projects/school_work/notes/conjugate_gradients/
+TEXFILE_DIR=/Users/maksim/dev_projects/school_work/notes/expectation_maximization/
 cp latexpand $TEXFILE_DIR/
-export PROJECTNAME=conjugate_gradients
+export PROJECTNAME=expectation_maximization
 
-TEXFILE=conjugate_gradients.tex
-BIBLIO=
+TEXFILE=exp.tex
+BIBLIO=gentle.bib
 FLOATS_TEXFILE=floats
 export FLOATS_LABELED=$TEXFILE_DIR/${FLOATS_TEXFILE}_labeled.pdf
 echo $FLOATS_LABELED
@@ -71,6 +71,8 @@ pandoc --filter=filter.py \
     -o $MD_FNAME
     # -t native > out_native.json
 fi
+
+python mathbf_fix.py $MD_FNAME
 
 pushd $TEXFILE_DIR
 
