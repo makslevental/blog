@@ -3,13 +3,11 @@ author:
 - Maksim Levental
 bibliography: /Users/maksim/dev_projects/school_work/spring2021/CMSC32900/biblio.bib
 csl: springer-mathphys-brackets.csl
-excerpt_separator: \<!--more-->
+excerpt_separator: <!--more-->
 link-citations: true
 reference-section-title: References
 title: Tensor Networks for Simulating Quantum Circuits on FPGAs
 ---
-
-# Abstract
 
 Most research in quantum computing today is performed against
 simulations of quantum computers rather than true quantum computers.
@@ -17,7 +15,7 @@ Simulating a quantum computer entails implementing all of the unitary
 operators corresponding to the quantum gates as tensors. For high
 numbers of qubits, performing tensor multiplications for these
 simulations becomes quite expensive, since $N$-qubit gates correspond
-to $2^{N}$-dimensional tensors. \<!--more--> One way to accelerate such a
+to $2^{N}$-dimensional tensors. <!--more--> One way to accelerate such a
 simulation is to use field programmable gate array (FPGA) hardware to
 efficiently compute the matrix multiplications. Though FPGAs can
 efficiently perform tensor multiplications, they are memory bound,
