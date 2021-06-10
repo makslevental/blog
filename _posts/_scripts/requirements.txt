@@ -2,3 +2,4 @@ pandocfilters
 pygments
 tika
 beautifulsoup4
+# requires at least pandoc 2.14
