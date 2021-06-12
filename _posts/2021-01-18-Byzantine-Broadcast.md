@@ -3,13 +3,14 @@ layout: post
 title: Byzantine Broadcast
 published: true
 use_math: true
+excerpt_separator: <!--more-->
 ---
 
 # Introduction
 
 “Imagine that several divisions of the Byzantine army are camped outside an enemy city, each division commanded by its own general. 
 The generals can communicate with one another only by messenger. 
-After observing the enemy, they must decide upon a common plan of action. 
+After observing the enemy, they must decide upon a common plan of action.  <!--more-->
 However, some of the generals may be traitors, trying to prevent the loyal generals from reaching agreement.”[^1]
 
 ## Formal definition of Byzantine Broadcast

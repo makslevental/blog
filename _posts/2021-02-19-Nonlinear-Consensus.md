@@ -3,6 +3,7 @@ layout: post
 title: Non-linear consensus protocols 
 published: true
 use_math: true
+excerpt_separator: <!--more-->
 ---
 
 This is a summary of [Non-linear protocols for optimal distributed consensus in networks of dynamic agents](https://www.sciencedirect.com/science/article/pii/S0167691106000971).
@@ -10,7 +11,7 @@ This is a summary of [Non-linear protocols for optimal distributed consensus in 
 # Definitions
 
 * $\Gamma = \\{1, \dots, n\\}$ is a set of agents/players/nodes/vertices and $G = (\Gamma, E)$ is a fixed (in time) undirected, connected[^1], network describing the connections between vertices $i \in \Gamma$, where $E \subset \Gamma \times \Gamma$ is the edge set. 
-* A *neighborhood* of a vertex $i$ is the set of all vertices $j$ for which there is a single edge connecting $i,j$, that is to say $N_i := \\{j \mid (i,j) \in E\\}$.
+* A *neighborhood* of a vertex $i$ is the set of all vertices $j$ for which there is a single edge connecting $i,j$, that is to say $N_i := \\{j \mid (i,j) \in E\\}$. <!--more-->
 
     <p align="center">
     <img src="/images/nonlinear_consensus/graph.png" width="350"/>

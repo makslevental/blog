@@ -3,13 +3,14 @@ layout: post
 title: Exact Solution Methods for Decision Problems
 published: true
 use_math: true
+excerpt_separator: <!--more-->
 ---
 
 # Definitions
 
 ## Markov Decision Process
 
-A Markov Decision Process (MDP) models choosing an **action** $$a_t$$ in an **action space** $$\mathcal{A}$$ while in a **state** $$s_t$$ (from a **state space** $$\mathcal{S}$$) and thence receiving a reward $$r_t$$.
+A Markov Decision Process (MDP) models choosing an **action** $$a_t$$ in an **action space** $$\mathcal{A}$$ while in a **state** $$s_t$$ (from a **state space** $$\mathcal{S}$$) and thence receiving a reward $$r_t$$. <!--more-->
 Choosing such an action *evolves* the process to a state $$s_{t+1}$$ according to a probability distribution $$P\left( S_{t+1} \mid S_t, A_t \right)$$ over states and actions[^1].
 The **Markov assumption** assumes that $$S_{t+1}$$ only depends on $$S_t$$ and $$A_t$$ (rather than the entire history/trajectory of the process).
 **Stationary** MDPs are those for which $$P\left( S_{t+1} \mid S_t, A_t \right)$$ does not vary in time (i.e. only depends on states and actions and not at which $$t$$ those states and actions were occupied/chosen).

@@ -3,12 +3,13 @@ layout: post
 title: Reed-Solomon Error Correcting Codes
 published: true
 use_math: true
+excerpt_separator: <!--more-->
 ---
 
 # Shannon's noisy-channel coding theorem
 
 **Shannon's noisy-channel coding theorem** sets bounds on how much data can be sent across a noisy channel **nearly error free**.
-The **Shannon capacity** of a channel is the maximum error-free data rate.
+The **Shannon capacity** of a channel is the maximum error-free data rate. <!--more-->
 
 <p align="center">
   <img src="/images/shannon_channel_model.svg" width="550px"/>

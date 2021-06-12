@@ -2,9 +2,12 @@
 layout: post
 title: Covariant derivatives
 published: true
+excerpt_separator: <!--more-->
 ---
 
 Covariant derivatives are a means of differentiating vectors relative to vectors. First we cover formal definitions of tangent vectors and then proceed to define a means to "covariantly differentiate".
+
+<!--more-->
 
 # Tangent vectors as derivations
 The most general definition of a vector tangent to a manifold involves *derivations*.
